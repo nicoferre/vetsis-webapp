@@ -1,3 +1,4 @@
+///<reference path="../../node_modules/@angular/http/src/interfaces.d.ts"/>
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
@@ -7,7 +8,6 @@ import { HeaderComponent } from './layout/header/header.component';
 import { LeftComponent } from './layout/left/left.component';
 import { CustomersComponent } from './pages/customers/customers.component';
 
-//bootstrap components
 import { AccordionModule } from 'ngx-bootstrap';
 import { AlertModule } from 'ngx-bootstrap';
 import { ButtonsModule } from 'ngx-bootstrap';
@@ -21,6 +21,8 @@ import { StockComponent } from './pages/stock/stock.component';
 import { StatisticsComponent } from './pages/statistics/statistics.component';
 import { SuppliersComponent } from './pages/suppliers/suppliers.component';
 import { LoginComponent } from './pages/login/login.component';
+import {CustomerService} from './services/customers/customer.service';
+import {HttpModule} from '@angular/http';
 
 @NgModule({
   declarations: [
@@ -38,6 +40,7 @@ import { LoginComponent } from './pages/login/login.component';
     LoginComponent,
   ],
   imports: [
+    HttpModule,
     BrowserModule,
     AppRoutingModule,
     AccordionModule.forRoot(),
@@ -45,7 +48,7 @@ import { LoginComponent } from './pages/login/login.component';
     ButtonsModule.forRoot(),
     TabsModule.forRoot(),
   ],
-  providers: [],
+  providers: [CustomerService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
