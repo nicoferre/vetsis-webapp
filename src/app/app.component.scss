@@ -1,0 +1,182 @@
+@import "../scss/variable";
+@import "../scss/mixins";
+
+html{
+  margin: 0;
+  font-size: 62.5%;
+}
+body{
+  font-family: $ubuntu;
+}
+ul{
+  list-style: none;
+}
+a:hover, a:active, a:focus{
+  text-decoration: none;
+}
+main.background{
+  height: 100vh;
+  padding-top: $headerH;
+  display: flex;
+  .container{
+    padding-top: 60px;
+  }
+}
+.floatLeft{
+  position: relative;
+  float: left;
+}
+
+.pageTitle{
+  color: $green;
+  border-bottom: solid 2px $green;
+  overflow: hidden;
+  margin-top: -50px;
+  margin-bottom: 20px;
+  span.icon{
+    @include font-size(37);
+    @extend .floatLeft;
+  }
+  h2{
+    @include font-size(30px);
+    @extend .floatLeft;
+    font-weight: bold;
+    margin: 0 0 0 15px;
+  }
+}
+
+/*@import "../app/layout/header/header.component";*/
+
+.header{
+  background-color: $violetDark;
+  box-shadow: 0 3px 7px 0 rgba(black,0.25);
+  position: fixed;
+  width: 100%;
+  height: $headerH;
+  padding-top: 17px;
+  padding-bottom: 17px;
+  z-index: 999;
+  .icon-style{
+    float:right;
+    color: white;
+    width: 36px;
+    font-size: 17px;
+    margin-left: 5px;
+  }
+  .color{
+    color: white;
+  }
+  .btn-primary{
+    position: fixed;
+    top:6px;
+    background-color: $violetDark;
+    height:36px;
+    width:36px;
+    border-radius: 50%;
+    border: 0;
+    padding: 7.5px;
+    outline: none;
+    &:hover{
+      background-color: $violetDark;
+      border-color: $violetDark;
+      outline: none;
+      box-shadow: none;
+    }
+    &:active:focus{
+      background-color: $violetDark;
+      border-color: $violetDark;
+      outline: none;
+      box-shadow: none;
+    }
+    p{
+      @include font-size(0);
+      height: 3px;
+      width: 21px;
+      background: $grayLight;
+      position: relative;
+      margin: 0;
+      transition: all 150ms ease;
+      &:before, &:after{
+        content: '';
+        height: 3px;
+        width: 21px;
+        background: $grayLight;
+        position: absolute;
+        top: -5px;
+        left: 50%;
+        margin-left: -10.5px;
+        transition: all 150ms ease;
+      }
+      &:after{
+        top:initial;
+        bottom: -5px;
+      }
+    }
+  }
+}
+
+/*@import "../app/layout/left/left.component";*/
+
+.leftMenu{
+  background-color: $violet;
+  min-height:calc(100vh - #{$headerH});
+  width:250px;
+  position: relative;
+  margin-top: -4px;
+  .btn{
+    transform: none !important;
+  }
+  &.opened{
+    transition: all 250ms ease;
+    p{
+      background-color: transparent;
+      &:before{
+        transform: rotate(45deg);
+        top:0;
+      }
+      &:after{
+        top:0;
+        transform: rotate(-45deg);
+      }
+    }
+  }
+  &.closed {
+    transition: all 150ms ease;
+    width: 0px;
+    .menuList{
+      display: none;
+    }
+  }
+  .menuList{
+    padding: 0;
+    transition: all 150ms ease;
+    margin-top:4px;
+    .menuItem{
+      padding: 15px 30px;
+      border-top: solid 1px $grayLight;
+      transition: all 250ms ease;
+      &:last-child{
+        border-bottom: solid 1px $grayLight;
+      }
+      &:hover{
+        background-color: $violetDark;
+      }
+      a{
+        color: $grayLight;
+        display: flex;
+        align-items: center;
+        span{
+          @include font-size(20);
+        }
+        p{
+          margin-bottom: 0;
+          margin-left: 10px;
+          @include font-size(14);
+        }
+      }
+    }
+  }
+}
+
+@import "../app/pages/customers/customers.component";
+@import "../app/pages/login/login.component";

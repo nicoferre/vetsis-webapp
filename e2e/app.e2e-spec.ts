@@ -1,10 +1,10 @@
-import { VetsisWebappPage } from './app.po';
+import { WebappPage } from './app.po';
 
-describe('vetsis-webapp App', () => {
-  let page: VetsisWebappPage;
+describe('webapp App', () => {
+  let page: WebappPage;
 
   beforeEach(() => {
-    page = new VetsisWebappPage();
+    page = new WebappPage();
   });
 
   it('should display welcome message', () => {

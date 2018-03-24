@@ -1,0 +1,110 @@
+@import "../../../scss/variable.scss";
+@import "../../../scss/mixins.scss";
+
+.leftMenu{
+  background-color: $violetDark;
+  min-height:calc(100vh - #{$headerH});
+  padding: 0;
+  padding-top: 46px;
+  width:250px;
+  position: relative;
+  margin-top:-50px;
+  .btn{
+    transform: none !important;
+  }
+  .btn-primary{
+    position: fixed;
+    top:6px;
+    background-color: $violetDark;
+    height:36px;
+    width:36px;
+    border-radius: 50%;
+    border: 0;
+    padding: 15px;
+    outline: none;
+    &:hover{
+      background-color: $violetDark;
+      border-color: $violetDark;
+      outline: none;
+      box-shadow: none;
+    }
+    &:active:focus{
+      background-color: $violetDark;
+      border-color: $violetDark;
+      outline: none;
+      box-shadow: none;
+    }
+    p{
+      @include font-size(0);
+      height: 3px;
+      width: 21px;
+      background: $grayLight;
+      position: relative;
+      margin: 0;
+      transition: all 150ms ease;
+      &:before, &:after{
+        content: '';
+        height: 3px;
+        width: 21px;
+        background: $grayLight;
+        position: absolute;
+        top: -5px;
+        left: 50%;
+        margin-left: -10.5px;
+        transition: all 150ms ease;
+      }
+      &:after{
+        top:initial;
+        bottom: -5px;
+      }
+    }
+  }
+  &.opened{
+    p{
+      background-color: transparent;
+      &:before{
+        transform: rotate(45deg);
+        top:0;
+      }
+      &:after{
+        top:0;
+        transform: rotate(-45deg);
+      }
+    }
+  }
+  &.closed {
+    width:0px;
+    .menuList{
+      display: none;
+    }
+  }
+  .menuList{
+    padding: 0;
+    transition: all 150ms ease;
+    margin-top:4px;
+    .menuItem{
+      padding: 15px 30px;
+      border-top: solid 1px $grayLight;
+      transition: all 250ms ease;
+      &:last-child{
+        border-bottom: solid 1px $grayLight;
+      }
+      &:hover{
+        background-color: $violet;
+      }
+      a{
+        color: $grayLight;
+        display: flex;
+        align-items: center;
+        span{
+          @include font-size(20);
+        }
+        p{
+          margin-bottom: 0;
+          margin-left: 10px;
+          @include font-size(14);
+        }
+      }
+    }
+  }
+}
