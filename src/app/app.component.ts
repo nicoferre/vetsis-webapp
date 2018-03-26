@@ -9,7 +9,7 @@ import { Component, ViewEncapsulation } from '@angular/core';
 
 export class AppComponent {
   title = 'app';
-  open() {
-    true;
+  open(){
+    true
   }
 }

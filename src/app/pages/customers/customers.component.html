@@ -1,29 +1,28 @@
-<div class="pageTitle col-lg-12">
+<div class="pageTitle col-lg-12" xmlns="">
   <h2>Clientes</h2>
 </div>
-
 <div>
   <tabset>
     <tab heading="Listado de Clientes">
-      <table class="table">
-        <thead>
-        <tr>
-          <th></th>
-          <th>Apellido</th>
-          <th>Nombre</th>
-          <th>Tipo de Documento</th>
-          <th>Nro de Documento</th>
-          <th>Telefono Fijo</th>
-          <th>Celular</th>
-          <th>Calle</th>
-          <th>Piso</th>
-          <th>Departamento</th>
-          <th>Localidad</th>
-        </tr>
-        </thead>
-        <tbody>
+      <table id="table_id" class="table table-striped ">
         <div *ngIf="customerList">
-          <div *ngFor="let customer of customerList">
+          <thead>
+          <tr>
+            <th scope="col"></th>
+            <th scope="col">Apellido</th>
+            <th scope="col">Nombre</th>
+            <th scope="col">Tipo de Documento</th>
+            <th scope="col">Nro de Documento</th>
+            <th scope="col">Telefono Fijo</th>
+            <th scope="col">Celular</th>
+            <th scope="col">Calle</th>
+            <th scope="col">Piso</th>
+            <th scope="col">Departamento</th>
+            <th scope="col">Localidad</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr *ngFor="let customer of customerList">
             <th scope="row"></th>
             <td>{{customer.lastname}}</td>
             <td>{{customer.name}}</td>
@@ -35,13 +34,13 @@
             <td>{{customer.floor}}</td>
             <td>{{customer.flat}}</td>
             <td>{{customer.location}}</td>
-          </div>
+          </tr>
+          </tbody>
         </div>
-        </tbody>
       </table>
     </tab>
-    <!--    <tab heading="Buscar Cliente">Buscar Cliente</tab>
-        <tab heading="Registro de Visitas">Registro de Visitas</tab>
-        <tab heading="Nuevo Cliente">Nuevo Cliente</tab>-->
+    <tab heading="Buscar Cliente">Buscar Cliente</tab>
+    <tab heading="Registro de Visitas">Registro de Visitas</tab>
+    <tab heading="Nuevo Cliente">Nuevo Cliente</tab>
   </tabset>
 </div>
