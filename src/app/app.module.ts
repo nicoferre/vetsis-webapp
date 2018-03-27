@@ -27,7 +27,6 @@ import {AuthenticationService} from './services/login/login.service';
 import {HttpClientModule} from '@angular/common/http';
 import {FormsModule} from '@angular/forms';
 import {AuthGuard} from './guards';
-import {AlertService} from './services/alert.service';
 
 @NgModule({
   declarations: [
@@ -58,8 +57,7 @@ import {AlertService} from './services/alert.service';
   ],
   providers: [CustomerService,
     AuthenticationService,
-    AuthGuard,
-    AlertService],
+    AuthGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule {

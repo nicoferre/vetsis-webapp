@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {AuthenticationService} from '../../services/login/login.service';
 import {ActivatedRoute, Router} from '@angular/router';
-import {AlertService} from '../../services/alert.service';
 
 @Component({
   selector: 'app-login',
@@ -16,8 +15,7 @@ export class LoginComponent implements OnInit {
 
   constructor(private route: ActivatedRoute,
               private router: Router,
-              private authenticationService: AuthenticationService,
-              private alertService: AlertService) { }
+              private authenticationService: AuthenticationService) { }
 
   ngOnInit() {
     this.authenticationService.logout();
@@ -36,7 +34,6 @@ export class LoginComponent implements OnInit {
           }
         },
         error => {
-          this.alertService.error(error);
           this.loading = false;
         });
   }
