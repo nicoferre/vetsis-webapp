@@ -45,9 +45,9 @@
 .loginmodal-container input[type=text]:hover, input[type=password]:hover {
   border: 1px solid #b9b9b9;
   border-top: 1px solid #a0a0a0;
-  -moz-box-shadow: inset 0 1px 2px rgba(0,0,0,0.1);
-  -webkit-box-shadow: inset 0 1px 2px rgba(0,0,0,0.1);
-  box-shadow: inset 0 1px 2px rgba(0,0,0,0.1);
+  -moz-box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.1);
+  -webkit-box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.1);
+  box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.1);
 }
 
 .loginmodal {
@@ -62,22 +62,28 @@
     user-select: none; */
 }
 
+.form-group {
+  margin-bottom: 0rem !important;
+}
+
 .loginmodal-submit {
   /* border: 1px solid #3079ed; */
   border: 0px;
   color: #fff;
-  text-shadow: 0 1px rgba(0,0,0,0.1);
+  text-shadow: 0 1px rgba(0, 0, 0, 0.1);
   background-color: $violet;
-  padding: 17px 0px;
+  padding: 15px 0px;
   font-family: roboto;
   font-size: 14px;
+  width: 70px;
+  margin-top: -2rem;
   /* background-image: -webkit-gradient(linear, 0 0, 0 100%,   from(#4d90fe), to(#4787ed)); */
 }
 
 .loginmodal-submit:hover {
   /* border: 1px solid #2f5bb7; */
   border: 0px;
-  text-shadow: 0 1px rgba(0,0,0,0.3);
+  text-shadow: 0 1px rgba(0, 0, 0, 0.3);
   background-color: $violetDark;
   /* background-image: -webkit-gradient(linear, 0 0, 0 100%,   from(#4d90fe), to(#357ae8)); */
 }
@@ -92,10 +98,10 @@
   transition: opacity ease 0.5s;
 }
 
-.login-help{
+.login-help {
   font-size: 12px;
 }
 
-.img-class{
+.img-class {
   margin-bottom: 15px;
 }
