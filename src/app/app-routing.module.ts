@@ -9,19 +9,20 @@ import {StatisticsComponent} from "./pages/statistics/statistics.component";
 import {StockComponent} from "./pages/stock/stock.component";
 import {SuppliersComponent} from "./pages/suppliers/suppliers.component";
 import {LoginComponent} from "./pages/login/login.component";
+import {AuthGuard} from './guards';
 
 const routes: Routes = [
   {
     path: '',
     children: [
-      {path : 'customers', component: CustomersComponent},
-      {path : 'billing', component: BillingComponent},
-      {path : 'box', component: BoxComponent},
-      {path : 'hairdressing', component: HairdressingComponent},
-      {path : 'patients', component: PatientsComponent},
-      {path : 'statistics', component: StatisticsComponent},
-      {path : 'stock', component: StockComponent},
-      {path : 'suppliers', component: SuppliersComponent},
+      {path : 'customers', component: CustomersComponent, canActivate: [AuthGuard] },
+      {path : 'billing', component: BillingComponent, canActivate: [AuthGuard] },
+      {path : 'box', component: BoxComponent, canActivate: [AuthGuard] },
+      {path : 'hairdressing', component: HairdressingComponent, canActivate: [AuthGuard] },
+      {path : 'patients', component: PatientsComponent, canActivate: [AuthGuard] },
+      {path : 'statistics', component: StatisticsComponent, canActivate: [AuthGuard] },
+      {path : 'stock', component: StockComponent, canActivate: [AuthGuard] },
+      {path : 'suppliers', component: SuppliersComponent, canActivate: [AuthGuard] },
       {path : 'login', component: LoginComponent},
       {path : '', component: LoginComponent},
       {path : '*', component: LoginComponent},
