@@ -1,5 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {CustomerService} from '../../services/customers/customer.service';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-customers',
@@ -11,7 +12,8 @@ export class CustomersComponent implements OnInit {
   public customerList = [];
   public errorWithService: any;
 
-  constructor(private customerService: CustomerService) {
+  constructor(private customerService: CustomerService,
+              private router: Router) {
   }
 
   ngOnInit() {
@@ -21,5 +23,10 @@ export class CustomersComponent implements OnInit {
       },
       error => this.errorWithService = error
     );
+  }
+
+  logout() {
+    localStorage.removeItem('currentUser');
+    this.router.navigate(['/']);
   }
 }

@@ -1,5 +1,6 @@
 <header id="header" class="header container-fluid">
   <button class="btn btn-primary" (click)="open = !open"><p>menu</p></button>
+  <button class="btn btn-logout" (click)="logout()" style="margin-left: 95%; margin-top: -0.8rem;"><p style="margin-bottom: 2px;">SALIR</p></button>
 </header>
 <main class="background">
   <div class="leftMenu" [ngClass]="{'opened': open, 'closed': !open}">
