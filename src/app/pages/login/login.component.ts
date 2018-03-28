@@ -8,7 +8,7 @@ import {ActivatedRoute, Router} from '@angular/router';
   styleUrls: ['./login.component.scss']
 })
 export class LoginComponent implements OnInit {
-
+  showAlert = false;
   loading = false;
   model: any = {};
   returnUrl: string;
@@ -35,6 +35,7 @@ export class LoginComponent implements OnInit {
         },
         error => {
           this.loading = false;
+          this.showAlert = true;
         });
   }
 }

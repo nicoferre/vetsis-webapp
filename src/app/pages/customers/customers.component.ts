@@ -13,7 +13,7 @@ export class CustomersComponent implements OnInit {
   public errorWithService: any;
 
   constructor(private customerService: CustomerService,
-              private router: Router) {
+              private router: Router  ) {
   }
 
   ngOnInit() {
