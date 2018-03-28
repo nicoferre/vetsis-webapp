@@ -1,6 +1,33 @@
 @import "../../../scss/variable.scss";
 @import "../../../scss/mixins.scss";
 
+.btn-logout{
+  position: fixed;
+  top:6px;
+  background-color: $violetDark;
+  height:36px;
+  width:36px;
+  border-radius: 50%;
+  border: 0;
+  padding: 15px;
+  outline: none;
+  &:hover{
+    background-color: $violetDark;
+    border-color: $violetDark;
+    outline: none;
+    box-shadow: none;
+  }
+  &:active:focus{
+    background-color: $violetDark;
+    border-color: $violetDark;
+    outline: none;
+    box-shadow: none;
+  }
+  p{
+    margin-bottom: 0rem !important;
+  }
+}
+
 .leftMenu{
   background-color: $violetDark;
   min-height:calc(100vh - #{$headerH});

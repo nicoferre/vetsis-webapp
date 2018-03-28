@@ -10,6 +10,7 @@ import {StockComponent} from "./pages/stock/stock.component";
 import {SuppliersComponent} from "./pages/suppliers/suppliers.component";
 import {LoginComponent} from "./pages/login/login.component";
 import {AuthGuard} from './guards';
+import {HomeComponent} from './pages/home/home.component';
 
 const routes: Routes = [
   {
@@ -23,6 +24,7 @@ const routes: Routes = [
       {path : 'statistics', component: StatisticsComponent, canActivate: [AuthGuard] },
       {path : 'stock', component: StockComponent, canActivate: [AuthGuard] },
       {path : 'suppliers', component: SuppliersComponent, canActivate: [AuthGuard] },
+      {path : 'home', component: HomeComponent},
       {path : 'login', component: LoginComponent},
       {path : '', component: LoginComponent},
       {path : '*', component: LoginComponent},

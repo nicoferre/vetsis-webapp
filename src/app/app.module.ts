@@ -27,6 +27,7 @@ import {AuthenticationService} from './services/login/login.service';
 import {HttpClientModule} from '@angular/common/http';
 import {FormsModule} from '@angular/forms';
 import {AuthGuard} from './guards';
+import {HomeComponent} from './pages/home/home.component';
 
 @NgModule({
   declarations: [
@@ -42,6 +43,7 @@ import {AuthGuard} from './guards';
     StatisticsComponent,
     SuppliersComponent,
     LoginComponent,
+    HomeComponent,
   ],
   imports: [
     BrowserModule,

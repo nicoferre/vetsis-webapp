@@ -1,4 +1,4 @@
-import { Component, ViewEncapsulation } from '@angular/core';
+import {Component, Input, OnInit, ViewEncapsulation} from '@angular/core';
 
 @Component({
   selector: 'app-root',
@@ -7,9 +7,13 @@ import { Component, ViewEncapsulation } from '@angular/core';
   encapsulation: ViewEncapsulation.None
 })
 
-export class AppComponent {
-  title = 'app';
-  open(){
-    true
+export class AppComponent implements OnInit {
+
+  @Input() showMenu: boolean = false;
+  public user: string = localStorage.getItem('currentUser');
+  ngOnInit() {
+    if (this.user !== null) {
+      this.showMenu = true;
+    }
   }
 }
