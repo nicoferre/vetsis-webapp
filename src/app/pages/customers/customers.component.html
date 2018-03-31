@@ -50,6 +50,11 @@
           <p>Proveedores</p>
         </a>
       </li>
+      <li class="menuItem" *ngIf="role === 9">
+        <a routerLink="administrator">
+          <p>Administrador</p>
+        </a>
+      </li>
     </ul>
   </div>
   <div class="container">
@@ -100,58 +105,61 @@
                   <div class="form-group">
                     <label class="col-md-4 control-label">Nombre</label>
                     <div class="col-md-4 inputGroupContainer">
-                      <input name="first_name" placeholder="Nombre" class="form-control" type="text">
+                      <input name="name" placeholder="Nombre" class="form-control" [(ngModel)]="customers.name" #name="ngModel" type="text">
                     </div>
                   </div>
                   <div class="form-group">
                     <label class="col-md-4 control-label">Apellido</label>
                     <div class="col-md-4 inputGroupContainer">
-                      <input name="last_name" placeholder="Apellido" class="form-control" type="text">
+                      <input name="lastname" placeholder="Apellido" class="form-control" [(ngModel)]="customers.lastname" #lastname="ngModel" type="text">
                     </div>
                   </div>
                   <div class="form-group">
                     <label class="col-md-4 control-label">DNI</label>
                     <div class="col-md-4 inputGroupContainer">
-                      <input name="doc_num" placeholder="DNI" class="form-control" type="text">
+                      <input name="docNum" placeholder="DNI" [(ngModel)]="customers.docNum" #docNum="ngModel" class="form-control" type="text">
                     </div>
                   </div>
                   <div class="form-group">
                     <label class="col-md-4 control-label">Teléfono</label>
                     <div class="col-md-4 inputGroupContainer">
-                      <input name="phone" placeholder="(351)4732596" class="form-control" type="text">
+                      <input name="phone" placeholder="(351)4732596" [(ngModel)]="customers.phone" #phone="ngModel" class="form-control" type="text">
                     </div>
                   </div>
                   <div class="form-group">
                     <label class="col-md-4 control-label">Celular</label>
                     <div class="col-md-4 inputGroupContainer">
-                      <input name="cellPhone" placeholder="(351)6536411" class="form-control" type="text">
+                      <input name="cellPhone" placeholder="(351)6536411" [(ngModel)]="customers.cellPhone" #cellPhone="ngModel" class="form-control" type="text">
                     </div>
                   </div>
                   <div class="form-group">
                     <label class="col-md-4 control-label">Dirección</label>
                     <div class="col-md-4 inputGroupContainer">
-                      <input name="address" placeholder="Dirección" class="form-control" type="text">
+                      <input name="street" placeholder="Dirección" [(ngModel)]="customers.street" #street="ngModel" class="form-control" type="text">
                     </div>
                   </div>
                   <div class="form-group">
                     <label class="col-md-4 control-label">Piso</label>
                     <div class="col-md-4 inputGroupContainer">
-                      <input name="floor" placeholder="Piso" class="form-control" type="text">
+                      <input name="floor" placeholder="Piso" [(ngModel)]="customers.floor" #floor="ngModel" class="form-control" type="text">
                     </div>
                   </div>
                   <div class="form-group">
                     <label class="col-md-4 control-label">Departamento</label>
                     <div class="col-md-4 inputGroupContainer">
-                      <input name="flat" placeholder="Departamento" class="form-control" type="text">
+                      <input name="flat" placeholder="Departamento" [(ngModel)]="customers.flat" #flat="ngModel" class="form-control" type="text">
                     </div>
                   </div>
-                  <div class="alert alert-success" role="alert" id="success_message">Success <i
-                    class="glyphicon glyphicon-thumbs-up"></i> Thanks for contacting us, we will get back to you shortly.
+                  <div class="form-group">
+                    <label class="col-md-4 control-label">Localidad</label>
+                    <div class="col-md-4 inputGroupContainer">
+                      <input name="location" placeholder="Localidad" [(ngModel)]="customers.location" #location="ngModel" class="form-control" type="text">
+                    </div>
                   </div>
                   <div class="form-group">
                     <label class="col-md-4 control-label"></label>
                     <div class="col-md-4">
-                      <button type="submit" class="btn btn-primary">Nuevo</button>
+                      <button (click)="newClient()" class="btn btn-primary">Nuevo</button>
                     </div>
                   </div>
                 </fieldset>

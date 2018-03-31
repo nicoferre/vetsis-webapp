@@ -25,6 +25,7 @@ const routes: Routes = [
       {path : 'stock', component: StockComponent, canActivate: [AuthGuard] },
       {path : 'suppliers', component: SuppliersComponent, canActivate: [AuthGuard] },
       {path : 'home', component: HomeComponent},
+      {path : 'administrator', component: LoginComponent},
       {path : 'login', component: LoginComponent},
       {path : '', component: LoginComponent},
       {path : '*', component: LoginComponent},

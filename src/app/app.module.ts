@@ -28,6 +28,7 @@ import {HttpClientModule} from '@angular/common/http';
 import {FormsModule} from '@angular/forms';
 import {AuthGuard} from './guards';
 import {HomeComponent} from './pages/home/home.component';
+import {AdministratorComponent} from './pages/administrator/administrator.component';
 
 @NgModule({
   declarations: [
@@ -43,6 +44,7 @@ import {HomeComponent} from './pages/home/home.component';
     StatisticsComponent,
     SuppliersComponent,
     LoginComponent,
+    AdministratorComponent,
     HomeComponent,
   ],
   imports: [

@@ -28,7 +28,7 @@ export class LoginComponent implements OnInit {
       .subscribe(
         data => {
           if (0 !== Object.keys(data).length) {
-            this.router.navigate(['/home']);
+            this.router.navigate(['/customers']);
           } else {
             this.loading = false;
           }
