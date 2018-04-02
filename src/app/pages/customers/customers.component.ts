@@ -16,12 +16,11 @@ export class CustomersComponent implements OnInit {
   public role: any;
 
   constructor(private customerService: CustomerService,
-              private router: Router  ) {
+              private router: Router) {
   }
 
   ngOnInit() {
     this.role = JSON.parse(localStorage.getItem('currentUser'))[0]['role'];
-    console.info(this.role);
     this.customerService.showCustomer().subscribe(
       availableItems => {
         this.customerList = availableItems;
@@ -36,7 +35,6 @@ export class CustomersComponent implements OnInit {
   }
 
   newClient() {
-    console.log(this.customers);
     this.customerService.newClient(this.customers).subscribe(
       client => {
         console.log(client);

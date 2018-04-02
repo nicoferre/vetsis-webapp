@@ -14,7 +14,6 @@ import {ButtonsModule} from 'ngx-bootstrap';
 import {TabsModule} from 'ngx-bootstrap';
 
 import {PatientsComponent} from './pages/patients/patients.component';
-import {HairdressingComponent} from './pages/hairdressing/hairdressing.component';
 import {BillingComponent} from './pages/billing/billing.component';
 import {BoxComponent} from './pages/box/box.component';
 import {StockComponent} from './pages/stock/stock.component';
@@ -29,6 +28,7 @@ import {FormsModule} from '@angular/forms';
 import {AuthGuard} from './guards';
 import {HomeComponent} from './pages/home/home.component';
 import {AdministratorComponent} from './pages/administrator/administrator.component';
+import {ProviderService} from './services/providers/provider.service';
 
 @NgModule({
   declarations: [
@@ -37,7 +37,6 @@ import {AdministratorComponent} from './pages/administrator/administrator.compon
     LeftComponent,
     CustomersComponent,
     PatientsComponent,
-    HairdressingComponent,
     BillingComponent,
     BoxComponent,
     StockComponent,
@@ -60,6 +59,7 @@ import {AdministratorComponent} from './pages/administrator/administrator.compon
     TabsModule.forRoot(),
   ],
   providers: [CustomerService,
+    ProviderService,
     AuthenticationService,
     AuthGuard],
   bootstrap: [AppComponent]

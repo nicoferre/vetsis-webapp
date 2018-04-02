@@ -11,47 +11,42 @@
     <!--<app-left></app-left>-->
     <ul class="menuList">
       <li class="menuItem">
-        <a routerLink="customers">
+        <a routerLink="../customers">
           <p>Clientes</p>
         </a>
       </li>
       <li class="menuItem">
-        <a routerLink="patients">
-          <p>Pacientes</p>
+        <a routerLink="../patients">
+          <p>Mascotas</p>
         </a>
       </li>
       <li class="menuItem">
-        <a routerLink="hairdressing">
-          <p>Peluquería</p>
-        </a>
-      </li>
-      <li class="menuItem">
-        <a routerLink="billing">
+        <a routerLink="../billing">
           <p>Facturación</p>
         </a>
       </li>
       <li class="menuItem">
-        <a routerLink="box">
+        <a routerLink="../box">
           <p>Caja</p>
         </a>
       </li>
       <li class="menuItem">
-        <a routerLink="stock">
+        <a routerLink="../stock">
           <p>Stock</p>
         </a>
       </li>
       <li class="menuItem">
-        <a routerLink="statistics">
+        <a routerLink="../statistics">
           <p>Estadísticas</p>
         </a>
       </li>
       <li class="menuItem">
-        <a routerLink="suppliers">
+        <a routerLink="../suppliers">
           <p>Proveedores</p>
         </a>
       </li>
       <li class="menuItem" *ngIf="role === 9">
-        <a routerLink="administrator">
+        <a routerLink="../administrator">
           <p>Administrador</p>
         </a>
       </li>
@@ -165,7 +160,6 @@
                 </fieldset>
               </form>
             </tab>
-            <tab heading="Registro de Visitas">Registro de Visitas</tab>
           </tabset>
         </div>
       </div>

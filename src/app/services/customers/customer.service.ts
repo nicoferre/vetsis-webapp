@@ -4,7 +4,6 @@ import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';
 import {ICustomer} from './customer';
-import {promise} from 'selenium-webdriver';
 
 @Injectable()
 export class CustomerService {
@@ -21,7 +20,7 @@ export class CustomerService {
       .catch(this.handleError);
   }
 
-  newClient(customer: string) {
+  public newClient(customer: string) {
     return this._http
       .post('http://localhost:8088/vetsis/v1/customer/addCustomer', customer)
       .map((response: Response) => <any>response.json())
