@@ -62,7 +62,7 @@
           <tabset>
             <tab heading="Listado de Pedidos">
               <table id="listado_pedido" class="table table-striped ">
-                <div>
+                <div *ngIf="orderList">
                   <thead>
                   <tr>
                     <th scope="col"></th>
@@ -73,12 +73,12 @@
                   </tr>
                   </thead>
                   <tbody>
-                  <tr>
+                  <tr *ngFor="let order of orderList">
                     <th scope="row"></th>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
+                    <td>{{order.date | date : "dd/MM/yyyy"}}</td>
+                    <td>{{order.idProvider}}</td>
+                    <td>{{order.amount}}</td>
+                    <td>{{order.observations}}</td>
                   </tr>
                   </tbody>
                 </div>
@@ -90,8 +90,8 @@
                   <div class="form-group">
                     <label class="col-md-4 control-label">Proveedor</label>
                     <div class="col-md-4 inputGroupContainer">
-                      <select class="form-control height">
-                        <option name="providerName" *ngFor="let provider of providersList" value="provider.id">{{provider.name}}</option>
+                      <select class="form-control height" name="providerList" id="providerList">
+                        <option name="providerName" *ngFor="let provider of providersList" value="{{provider.id}}">{{provider.name}}</option>
                       </select>
                     </div>
                   </div>
@@ -110,7 +110,7 @@
                   <div class="form-group">
                     <label class="col-md-4 control-label"></label>
                     <div class="col-md-4">
-                      <button (click)="newOrder(provider.id)" class="btn btn-primary">Nuevo</button>
+                      <button (click)="newOrder()" class="btn btn-primary">Nuevo</button>
                     </div>
                   </div>
                 </fieldset>

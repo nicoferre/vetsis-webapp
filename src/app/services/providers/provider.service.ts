@@ -4,6 +4,7 @@ import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';
 import {IProvider} from './provider';
+import {IOrders} from '../patients/order';
 
 @Injectable()
 export class ProviderService {
@@ -29,6 +30,13 @@ export class ProviderService {
     return this._http
       .post('http://localhost:8088/vetsis/v1/provider/newOrder', order)
       .map((response: Response) => <any>response.json())
+      .catch(this.handleError);
+  }
+
+  public showOrders(): Observable<IOrders[]> {
+    return this._http
+      .get('http://localhost:8088/vetsis/v1/provider/orders')
+      .map((response: Response) => <IProvider[]>response.json())
       .catch(this.handleError);
   }
 
