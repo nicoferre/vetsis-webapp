@@ -10,14 +10,9 @@ import {Router} from '@angular/router';
 })
 export class HomeComponent implements OnInit {
 
-  constructor(private router: Router) {
+  constructor() {
   }
 
   ngOnInit() {
-  }
-
-  logout() {
-    localStorage.removeItem('currentUser');
-    this.router.navigate(['/']);
   }
 }

@@ -5,7 +5,6 @@ import {NgModule} from '@angular/core';
 import {AppRoutingModule} from './app-routing.module';
 import {AppComponent} from './app.component';
 import {HeaderComponent} from './layout/header/header.component';
-import {LeftComponent} from './layout/left/left.component';
 import {CustomersComponent} from './pages/customers/customers.component';
 
 import {AccordionModule} from 'ngx-bootstrap';
@@ -34,7 +33,6 @@ import {ProviderService} from './services/providers/provider.service';
   declarations: [
     AppComponent,
     HeaderComponent,
-    LeftComponent,
     CustomersComponent,
     PatientsComponent,
     BillingComponent,

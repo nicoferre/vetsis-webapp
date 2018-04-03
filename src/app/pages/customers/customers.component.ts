@@ -13,25 +13,18 @@ export class CustomersComponent implements OnInit {
   public customerList = [];
   public errorWithService: any;
   customers: any = {};
-  public role: any;
 
   constructor(private customerService: CustomerService,
               private router: Router) {
   }
 
   ngOnInit() {
-    this.role = JSON.parse(localStorage.getItem('currentUser'))[0]['role'];
     this.customerService.showCustomer().subscribe(
       availableItems => {
         this.customerList = availableItems;
       },
       error => this.errorWithService = error
     );
-  }
-
-  logout() {
-    localStorage.removeItem('currentUser');
-    this.router.navigate(['/']);
   }
 
   newClient() {

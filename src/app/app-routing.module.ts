@@ -22,7 +22,7 @@ const routes: Routes = [
       {path : 'statistics', component: StatisticsComponent, canActivate: [AuthGuard] },
       {path : 'stock', component: StockComponent, canActivate: [AuthGuard] },
       {path : 'suppliers', component: SuppliersComponent, canActivate: [AuthGuard] },
-      {path : 'home', component: HomeComponent},
+      {path : 'home', component: HomeComponent, canActivate: [AuthGuard] },
       {path : 'administrator', component: LoginComponent},
       {path : 'login', component: LoginComponent},
       {path : '', component: LoginComponent},

@@ -1,168 +1,113 @@
-<script type="text/javascript">
-  $(document).ready(function() { $('#example').DataTable(); } );
-
-</script>
-<header id="header" class="header container-fluid">
-  <button class="btn btn-primary" (click)="open = !open"><p>menu</p></button>
-  <button class="btn btn-logout" (click)="logout()" style="margin-left: 95%; margin-top: -0.8rem;"><p style="margin-bottom: 2px;">SALIR</p></button>
-</header>
-<main class="background">
-  <div class="leftMenu" [ngClass]="{'opened': open, 'closed': !open}">
-    <!--<app-left></app-left>-->
-    <ul class="menuList">
-      <li class="menuItem">
-        <a routerLink="../customers">
-          <p>Clientes</p>
-        </a>
-      </li>
-      <li class="menuItem">
-        <a routerLink="../patients">
-          <p>Mascotas</p>
-        </a>
-      </li>
-      <li class="menuItem">
-        <a routerLink="../billing">
-          <p>Facturación</p>
-        </a>
-      </li>
-      <li class="menuItem">
-        <a routerLink="../box">
-          <p>Caja</p>
-        </a>
-      </li>
-      <li class="menuItem">
-        <a routerLink="../stock">
-          <p>Stock</p>
-        </a>
-      </li>
-      <li class="menuItem">
-        <a routerLink="../statistics">
-          <p>Estadísticas</p>
-        </a>
-      </li>
-      <li class="menuItem">
-        <a routerLink="../suppliers">
-          <p>Proveedores</p>
-        </a>
-      </li>
-      <li class="menuItem" *ngIf="role === 9">
-        <a routerLink="../administrator">
-          <p>Administrador</p>
-        </a>
-      </li>
-    </ul>
-  </div>
-  <div class="container">
-    <div class="row">
-      <div class="col-lg-12">
-        <div class="pageTitle col-lg-12" xmlns="" xmlns="">
-          <h2>Clientes</h2>
-        </div>
-        <div>
-          <tabset>
-            <tab heading="Listado de Clientes">
-              <table id="example" class="table table-striped ">
-                <div *ngIf="customerList">
-                  <thead>
-                  <tr>
-                    <th scope="col"></th>
-                    <th scope="col">Apellido</th>
-                    <th scope="col">Nombre</th>
-                    <th scope="col">Nro de Documento</th>
-                    <th scope="col">Teléfono</th>
-                    <th scope="col">Celular</th>
-                    <th scope="col">Calle</th>
-                    <th scope="col">Piso</th>
-                    <th scope="col">Departamento</th>
-                    <th scope="col">Localidad</th>
-                  </tr>
-                  </thead>
-                  <tbody>
-                  <tr *ngFor="let customer of customerList">
-                    <th scope="row"></th>
-                    <td>{{customer.lastname}}</td>
-                    <td>{{customer.name}}</td>
-                    <td>{{customer.docNum}}</td>
-                    <td>{{customer.phone}}</td>
-                    <td>{{customer.cellPhone}}</td>
-                    <td>{{customer.street}}</td>
-                    <td>{{customer.floor}}</td>
-                    <td>{{customer.flat}}</td>
-                    <td>{{customer.location}}</td>
-                  </tr>
-                  </tbody>
+<div class="container">
+  <div class="row">
+    <div class="col-lg-12">
+      <div class="pageTitle col-lg-12" xmlns="" xmlns="">
+        <h2>Clientes</h2>
+      </div>
+      <div>
+        <tabset>
+          <tab heading="Listado de Clientes">
+            <table id="example" class="table table-striped ">
+              <div *ngIf="customerList">
+                <thead>
+                <tr>
+                  <th scope="col"></th>
+                  <th scope="col">Apellido</th>
+                  <th scope="col">Nombre</th>
+                  <th scope="col">Nro de Documento</th>
+                  <th scope="col">Teléfono</th>
+                  <th scope="col">Celular</th>
+                  <th scope="col">Calle</th>
+                  <th scope="col">Piso</th>
+                  <th scope="col">Departamento</th>
+                  <th scope="col">Localidad</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr *ngFor="let customer of customerList">
+                  <th scope="row"></th>
+                  <td>{{customer.lastname}}</td>
+                  <td>{{customer.name}}</td>
+                  <td>{{customer.docNum}}</td>
+                  <td>{{customer.phone}}</td>
+                  <td>{{customer.cellPhone}}</td>
+                  <td>{{customer.street}}</td>
+                  <td>{{customer.floor}}</td>
+                  <td>{{customer.flat}}</td>
+                  <td>{{customer.location}}</td>
+                </tr>
+                </tbody>
+              </div>
+            </table>
+          </tab>
+          <tab heading="Nuevo Cliente">
+            <form class="well form-horizontal" action=" " method="post" id="contact_form">
+              <fieldset>
+                <div class="form-group">
+                  <label class="col-md-4 control-label">Nombre</label>
+                  <div class="col-md-4 inputGroupContainer">
+                    <input name="name" placeholder="Nombre" class="form-control" [(ngModel)]="customers.name" #name="ngModel" type="text">
+                  </div>
                 </div>
-              </table>
-            </tab>
-            <tab heading="Nuevo Cliente">
-              <form class="well form-horizontal" action=" " method="post" id="contact_form">
-                <fieldset>
-                  <div class="form-group">
-                    <label class="col-md-4 control-label">Nombre</label>
-                    <div class="col-md-4 inputGroupContainer">
-                      <input name="name" placeholder="Nombre" class="form-control" [(ngModel)]="customers.name" #name="ngModel" type="text">
-                    </div>
+                <div class="form-group">
+                  <label class="col-md-4 control-label">Apellido</label>
+                  <div class="col-md-4 inputGroupContainer">
+                    <input name="lastname" placeholder="Apellido" class="form-control" [(ngModel)]="customers.lastname" #lastname="ngModel" type="text">
                   </div>
-                  <div class="form-group">
-                    <label class="col-md-4 control-label">Apellido</label>
-                    <div class="col-md-4 inputGroupContainer">
-                      <input name="lastname" placeholder="Apellido" class="form-control" [(ngModel)]="customers.lastname" #lastname="ngModel" type="text">
-                    </div>
+                </div>
+                <div class="form-group">
+                  <label class="col-md-4 control-label">DNI</label>
+                  <div class="col-md-4 inputGroupContainer">
+                    <input name="docNum" placeholder="DNI" [(ngModel)]="customers.docNum" #docNum="ngModel" class="form-control" type="text">
                   </div>
-                  <div class="form-group">
-                    <label class="col-md-4 control-label">DNI</label>
-                    <div class="col-md-4 inputGroupContainer">
-                      <input name="docNum" placeholder="DNI" [(ngModel)]="customers.docNum" #docNum="ngModel" class="form-control" type="text">
-                    </div>
+                </div>
+                <div class="form-group">
+                  <label class="col-md-4 control-label">Teléfono</label>
+                  <div class="col-md-4 inputGroupContainer">
+                    <input name="phone" placeholder="(351)4732596" [(ngModel)]="customers.phone" #phone="ngModel" class="form-control" type="text">
                   </div>
-                  <div class="form-group">
-                    <label class="col-md-4 control-label">Teléfono</label>
-                    <div class="col-md-4 inputGroupContainer">
-                      <input name="phone" placeholder="(351)4732596" [(ngModel)]="customers.phone" #phone="ngModel" class="form-control" type="text">
-                    </div>
+                </div>
+                <div class="form-group">
+                  <label class="col-md-4 control-label">Celular</label>
+                  <div class="col-md-4 inputGroupContainer">
+                    <input name="cellPhone" placeholder="(351)6536411" [(ngModel)]="customers.cellPhone" #cellPhone="ngModel" class="form-control" type="text">
                   </div>
-                  <div class="form-group">
-                    <label class="col-md-4 control-label">Celular</label>
-                    <div class="col-md-4 inputGroupContainer">
-                      <input name="cellPhone" placeholder="(351)6536411" [(ngModel)]="customers.cellPhone" #cellPhone="ngModel" class="form-control" type="text">
-                    </div>
+                </div>
+                <div class="form-group">
+                  <label class="col-md-4 control-label">Dirección</label>
+                  <div class="col-md-4 inputGroupContainer">
+                    <input name="street" placeholder="Dirección" [(ngModel)]="customers.street" #street="ngModel" class="form-control" type="text">
                   </div>
-                  <div class="form-group">
-                    <label class="col-md-4 control-label">Dirección</label>
-                    <div class="col-md-4 inputGroupContainer">
-                      <input name="street" placeholder="Dirección" [(ngModel)]="customers.street" #street="ngModel" class="form-control" type="text">
-                    </div>
+                </div>
+                <div class="form-group">
+                  <label class="col-md-4 control-label">Piso</label>
+                  <div class="col-md-4 inputGroupContainer">
+                    <input name="floor" placeholder="Piso" [(ngModel)]="customers.floor" #floor="ngModel" class="form-control" type="text">
                   </div>
-                  <div class="form-group">
-                    <label class="col-md-4 control-label">Piso</label>
-                    <div class="col-md-4 inputGroupContainer">
-                      <input name="floor" placeholder="Piso" [(ngModel)]="customers.floor" #floor="ngModel" class="form-control" type="text">
-                    </div>
+                </div>
+                <div class="form-group">
+                  <label class="col-md-4 control-label">Departamento</label>
+                  <div class="col-md-4 inputGroupContainer">
+                    <input name="flat" placeholder="Departamento" [(ngModel)]="customers.flat" #flat="ngModel" class="form-control" type="text">
                   </div>
-                  <div class="form-group">
-                    <label class="col-md-4 control-label">Departamento</label>
-                    <div class="col-md-4 inputGroupContainer">
-                      <input name="flat" placeholder="Departamento" [(ngModel)]="customers.flat" #flat="ngModel" class="form-control" type="text">
-                    </div>
+                </div>
+                <div class="form-group">
+                  <label class="col-md-4 control-label">Localidad</label>
+                  <div class="col-md-4 inputGroupContainer">
+                    <input name="location" placeholder="Localidad" [(ngModel)]="customers.location" #location="ngModel" class="form-control" type="text">
                   </div>
-                  <div class="form-group">
-                    <label class="col-md-4 control-label">Localidad</label>
-                    <div class="col-md-4 inputGroupContainer">
-                      <input name="location" placeholder="Localidad" [(ngModel)]="customers.location" #location="ngModel" class="form-control" type="text">
-                    </div>
+                </div>
+                <div class="form-group">
+                  <label class="col-md-4 control-label"></label>
+                  <div class="col-md-4">
+                    <button (click)="newClient()" class="btn btn-primary">Nuevo</button>
                   </div>
-                  <div class="form-group">
-                    <label class="col-md-4 control-label"></label>
-                    <div class="col-md-4">
-                      <button (click)="newClient()" class="btn btn-primary">Nuevo</button>
-                    </div>
-                  </div>
-                </fieldset>
-              </form>
-            </tab>
-          </tabset>
-        </div>
+                </div>
+              </fieldset>
+            </form>
+          </tab>
+        </tabset>
       </div>
     </div>
   </div>
-</main>
+</div>
