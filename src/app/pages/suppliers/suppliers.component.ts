@@ -37,17 +37,13 @@ export class SuppliersComponent implements OnInit {
     );
   }
 
-  logout() {
-    localStorage.removeItem('currentUser');
-    this.router.navigate(['/']);
-  }
-
   newOrder() {
     const id = $("#providerList").val();
     this.order.idProvider = id;
     this.providerService.newOrder(this.order).subscribe(
       order => {
         console.log(order);
+        this.router.navigate(['/home']);
       },
       error => this.errorWithService = error
     );
