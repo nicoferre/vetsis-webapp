@@ -1,4 +1,4 @@
-import {Component, EventEmitter, OnInit, Output} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {Router} from '@angular/router';
 import {ProviderService} from '../../services/providers/provider.service';
 declare let jquery: any;
@@ -16,7 +16,6 @@ export class SuppliersComponent implements OnInit {
   public errorWithService: any;
   order: any = {};
   provider: any = {};
-  public role: any;
   constructor(private router: Router,
               private providerService: ProviderService) { }
 

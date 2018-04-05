@@ -28,6 +28,7 @@ import {AuthGuard} from './guards';
 import {HomeComponent} from './pages/home/home.component';
 import {AdministratorComponent} from './pages/administrator/administrator.component';
 import {ProviderService} from './services/providers/provider.service';
+import {CategoryService} from './services/category/category.service';
 
 @NgModule({
   declarations: [
@@ -59,6 +60,7 @@ import {ProviderService} from './services/providers/provider.service';
   providers: [CustomerService,
     ProviderService,
     AuthenticationService,
+    CategoryService,
     AuthGuard],
   bootstrap: [AppComponent]
 })

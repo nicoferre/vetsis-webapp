@@ -1,12 +1,10 @@
 import {Headers, Http, RequestOptions, Response} from '@angular/http';
 import {Injectable} from '@angular/core';
 import {Observable} from 'rxjs/Observable';
-import {IProvider} from '../providers/provider';
-import {IOrders} from '../patients/order';
 import {ICategory} from './category';
 
 @Injectable()
-export class ProviderService {
+export class CategoryService {
 
   headers: Headers;
   options: RequestOptions;

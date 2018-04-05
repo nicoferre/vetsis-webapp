@@ -5,7 +5,6 @@
 </header>
 <main class="background">
   <div class="leftMenu" [ngClass]="{'opened': open, 'closed': !open}" *ngIf="isLoggedIn$ | async as isLoggedIn">
-    <!--<app-left></app-left>-->
     <ul class="menuList" (click)="open = !open">
       <li class="menuItem">
         <a routerLink="../customers">
@@ -42,7 +41,7 @@
           <p>Proveedores</p>
         </a>
       </li>
-      <li class="menuItem" *ngIf="isRoleAdmin$ | async as isRoleAdmin$">
+      <li class="menuItem" *ngIf="isRoleAdmin$ | async as isRoleAdmin">
         <a routerLink="../administrator">
           <p>Administrador</p>
         </a>

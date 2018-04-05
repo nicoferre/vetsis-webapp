@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {CategoryService} from '../../services/category/category.service';
 
 @Component({
   selector: 'app-administrator',
@@ -7,9 +8,29 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AdministratorComponent implements OnInit {
 
-  constructor() { }
+  public categoryList = [];
+  public errorWithService: any;
+  constructor(private categoryService: CategoryService) { }
 
   ngOnInit() {
+    this.showCategories();
+  }
+
+  showCategories() {
+    this.categoryService.showCategories().subscribe(
+      availableItems => {
+        this.categoryList = availableItems;
+      },
+      error => this.errorWithService = error
+    );
+  }
+
+  deleteCategory(id) {
+    this.categoryService.deleteCategory(id)
+      .subscribe(
+        result => this.showCategories(),
+        error => this.errorWithService = error
+      );
   }
 
 }

@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {Observable} from 'rxjs/Observable';
 import {AuthenticationService} from '../../services/login/login.service';
-import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-header',
@@ -10,11 +9,9 @@ import {Router} from '@angular/router';
 })
 export class HeaderComponent implements OnInit {
 
-  public role: any;
   isLoggedIn$: Observable<boolean>;
   isRoleAdmin$: Observable<boolean>;
-  constructor(private authenticationService: AuthenticationService,
-              private router: Router) { }
+  constructor(private authenticationService: AuthenticationService) { }
 
   ngOnInit() {
     this.isLoggedIn$ = this.authenticationService.isLoggedIn;
