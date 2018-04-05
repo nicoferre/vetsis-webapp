@@ -88,4 +88,13 @@ export class SuppliersComponent implements OnInit {
     );
     $('.nav-tabs a[href="#showProviders"]').tab('show');
   }
+
+  deleteOrder(id) {
+    this.providerService.deleteOrder(id)
+      .subscribe(
+        result => this.showOrders(),
+        error => this.errorWithService = error
+      );
+    $('.nav-tabs a[href="#showOrders"]').tab('show');
+  }
 }

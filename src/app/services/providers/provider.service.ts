@@ -45,10 +45,18 @@ export class ProviderService {
   public deleteProvider(id): Observable<IProvider[]> {
     this.headers = new Headers({ 'provider_id': id });
     this.options = new RequestOptions({ headers: this.headers });
-
     return this._http
       .delete('http://localhost:8088/vetsis/v1/provider/deleteProvider', this.options)
       .map((response: Response) => <IProvider[]>response.json())
+      .catch(this.handleError);
+  }
+
+  public deleteOrder(id): Observable<IOrders[]> {
+    this.headers = new Headers({ 'order_id': id });
+    this.options = new RequestOptions({ headers: this.headers });
+    return this._http
+      .delete('http://localhost:8088/vetsis/v1/provider/deleteOrder', this.options)
+      .map((response: Response) => <IOrders[]>response.json())
       .catch(this.handleError);
   }
 

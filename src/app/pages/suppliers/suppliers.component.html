@@ -22,6 +22,7 @@
                   <th scope="col">Proveedor</th>
                   <th scope="col">Valor</th>
                   <th scope="col">Observaciones</th>
+                  <th></th>
                 </tr>
                 </thead>
                 <tbody>
@@ -31,6 +32,7 @@
                   <td>{{order.ordersdetails['0'].name}}</td>
                   <td>{{order.amount}}</td>
                   <td>{{order.observations}}</td>
+                  <td (click)="deleteOrder(order.id)"><i class="far fa-trash-alt"></i></td>
                 </tr>
                 </tbody>
               </div>
