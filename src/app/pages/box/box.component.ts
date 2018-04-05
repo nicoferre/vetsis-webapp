@@ -7,9 +7,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class BoxComponent implements OnInit {
 
+  sale: any = {};
   constructor() { }
 
   ngOnInit() {
   }
 
+  newSale() {
+    return null;
+  }
 }
