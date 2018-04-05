@@ -15,6 +15,7 @@ export class SuppliersComponent implements OnInit {
   public orderList = [];
   public errorWithService: any;
   order: any = {};
+  provider: any = {};
   public role: any;
   constructor(private router: Router,
               private providerService: ProviderService) { }
@@ -25,6 +26,15 @@ export class SuppliersComponent implements OnInit {
     this.showOrders();
   }
 
+  newProvider() {
+    this.providerService.newProvider(this.provider).subscribe(
+      provider => {
+        this.showProviders();
+      },
+      error => this.errorWithService = error
+    );
+    this.clearProviderForm();
+  }
   newOrder() {
     const id = $("#providerList").val();
     this.order.idProvider = id;
@@ -60,5 +70,22 @@ export class SuppliersComponent implements OnInit {
     this.order.amount = null;
     this.order.observations = null;
     $('.nav-tabs a[href="#showOrders"]').tab('show');
+  }
+
+  clearProviderForm() {
+    this.provider.name = null;
+    this.provider.address = null;
+    this.provider.cellPhone = null;
+    $('.nav-tabs a[href="#showProviders"]').tab('show');
+  }
+
+  deleteProvider(id) {
+    console.info('delete provider' + id);
+    this.providerService.deleteProvider(id)
+      .subscribe(
+        result => this.showProviders(),
+        error => this.errorWithService = error
+    );
+    $('.nav-tabs a[href="#showProviders"]').tab('show');
   }
 }

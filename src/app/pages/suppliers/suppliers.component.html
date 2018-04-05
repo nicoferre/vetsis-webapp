@@ -9,7 +9,7 @@
           <li class="active"><a data-toggle="tab" href="#showOrders">Listado de pedidos</a></li>
           <li><a data-toggle="tab" href="#newOrder">Nuevo pedido</a></li>
           <li><a data-toggle="tab" href="#showProviders">Listado de proveedores</a></li>
-          <li><a data-toggle="tab" href="#newProdiver">Nuevo proveedor</a></li>
+          <li><a data-toggle="tab" href="#newProvider">Nuevo proveedor</a></li>
         </ul>
         <div class="tab-content">
           <div id="showOrders" class="tab-pane fade in active">
@@ -81,6 +81,7 @@
                   <th scope="col">Nombre</th>
                   <th scope="col">Celular</th>
                   <th scope="col">Dirección</th>
+                  <th></th>
                 </tr>
                 </thead>
                 <tbody>
@@ -89,12 +90,45 @@
                   <td>{{provider.name}}</td>
                   <td>{{provider.cellPhone}}</td>
                   <td>{{provider.address}}</td>
+                  <td (click)="deleteProvider(provider.id)"><i class="far fa-trash-alt"></i></td>
                 </tr>
                 </tbody>
               </div>
             </table>
           </div>
-          <div id="newProvider" class="tab-pane fade"></div>
+          <div id="newProvider" class="tab-pane fade">
+            <form class="well form-horizontal" action=" " method="post" id="newProviderForm">
+              <fieldset>
+                <div class="form-group">
+                  <label class="col-md-4 control-label">Proveedor</label>
+                  <div class="col-md-8 inputGroupContainer">
+                    <input name="name" placeholder="Proveedor" class="form-control" [(ngModel)]="provider.name"
+                           #name="ngModel" type="text">
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label class="col-md-4 control-label">Dirección</label>
+                  <div class="col-md-8 inputGroupContainer">
+                    <input name="address" placeholder="Dirección" class="form-control" [(ngModel)]="provider.address"
+                           #address="ngModel" type="text">
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label class="col-md-4 control-label">Teléfono</label>
+                  <div class="col-md-8 inputGroupContainer">
+                    <input name="cellPhone" placeholder="Observaciones" class="form-control"
+                           [(ngModel)]="provider.cellPhone" #cellPhone="ngModel" type="tel">
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label class="col-md-4 control-label"></label>
+                  <div class="col-md-4">
+                    <button (click)="newProvider()" class="btn btn-primary">Nuevo</button>
+                  </div>
+                </div>
+              </fieldset>
+            </form>
+          </div>
         </div>
       </div>
     </div>
