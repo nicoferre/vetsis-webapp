@@ -2,6 +2,7 @@
 import {Component, OnInit} from '@angular/core';
 import {CustomerService} from '../../services/customers/customer.service';
 import {Router} from '@angular/router';
+import {AuthenticationService} from '../../services/login/login.service';
 
 @Component({
   selector: 'app-home',
@@ -10,9 +11,10 @@ import {Router} from '@angular/router';
 })
 export class HomeComponent implements OnInit {
 
-  constructor() {
+  constructor(private authenticationService: AuthenticationService) {
   }
 
   ngOnInit() {
+    console.info(this.authenticationService.isLoggedIn._isScalar);
   }
 }

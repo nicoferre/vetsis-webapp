@@ -11,6 +11,7 @@ export class HeaderComponent implements OnInit {
 
   isLoggedIn$: Observable<boolean>;
   isRoleAdmin$: Observable<boolean>;
+
   constructor(private authenticationService: AuthenticationService) { }
 
   ngOnInit() {

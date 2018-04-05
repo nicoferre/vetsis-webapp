@@ -9,10 +9,10 @@ import {Router} from '@angular/router';
 export class AuthenticationService {
   private loggedIn: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
   private roleAdmin: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
+
   get isLoggedIn() {
     return this.loggedIn.asObservable();
   }
-
   get isRoleAdmin() {
     return this.roleAdmin.asObservable();
   }

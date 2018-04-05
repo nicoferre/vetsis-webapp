@@ -1,135 +1,84 @@
-<script type="text/javascript">
-  $(document).ready(function() { $('#example').DataTable(); } );
-
-</script>
-<header id="header" class="header container-fluid">
-  <button class="btn btn-primary" (click)="open = !open"><p>menu</p></button>
-  <button class="btn btn-logout" (click)="logout()" style="margin-left: 95%; margin-top: -0.8rem;"><p style="margin-bottom: 2px;">SALIR</p></button>
-</header>
-<main class="background">
-  <div class="leftMenu" [ngClass]="{'opened': open, 'closed': !open}">
-    <!--<app-left></app-left>-->
-    <ul class="menuList">
-      <li class="menuItem">
-        <a routerLink="../customers">
-          <p>Clientes</p>
-        </a>
-      </li>
-      <li class="menuItem">
-        <a routerLink="../patients">
-          <p>Mascotas</p>
-        </a>
-      </li>
-      <li class="menuItem">
-        <a routerLink="../billing">
-          <p>Facturación</p>
-        </a>
-      </li>
-      <li class="menuItem">
-        <a routerLink="../box">
-          <p>Caja</p>
-        </a>
-      </li>
-      <li class="menuItem">
-        <a routerLink="../stock">
-          <p>Stock</p>
-        </a>
-      </li>
-      <li class="menuItem">
-        <a routerLink="../statistics">
-          <p>Estadísticas</p>
-        </a>
-      </li>
-      <li class="menuItem">
-        <a routerLink="../suppliers">
-          <p>Proveedores</p>
-        </a>
-      </li>
-      <li class="menuItem" *ngIf="role === 9">
-        <a routerLink="../administrator">
-          <p>Administrador</p>
-        </a>
-      </li>
-    </ul>
-  </div>
-  <div class="container">
-    <div class="row">
-      <div class="col-lg-12">
-        <div class="pageTitle col-lg-12" xmlns="" xmlns="">
-          <h2>Mascotas</h2>
-        </div>
-        <div>
-          <tabset>
-            <tab heading="Nueva mascota">
-              <form class="well form-horizontal" action=" " method="post" id="contact_form">
-                <fieldset>
-                  <div class="form-group">
-                    <label class="col-md-4 control-label">Número de historia clinica</label>
-                    <div class="col-md-4 inputGroupContainer">
-                      <input name="id" placeholder="1" readonly="readonly" class="form-control" type="text">
-                    </div>
+<div class="container">
+  <div class="row">
+    <div class="col-lg-12">
+      <div class="pageTitle col-lg-12" xmlns="" xmlns="">
+        <h2>Mascotas</h2>
+      </div>
+      <div>
+        <tabset>
+          <tab heading="Nueva mascota">
+            <form class="well form-horizontal" action=" " method="post" id="contact_form">
+              <fieldset>
+                <div class="form-group">
+                  <label class="col-md-4 control-label">Número de historia clinica</label>
+                  <div class="col-md-4 inputGroupContainer">
+                    <input name="id" placeholder="1" readonly="readonly" class="form-control" type="text">
                   </div>
-                  <div class="form-group">
-                    <label class="col-md-4 control-label">Cliente</label>
-                    <div class="col-md-4 inputGroupContainer">
-                      <select class="form-control height">
-                        <option *ngFor="let customer of customerList" value="{{customer.id}}">{{customer.name}} {{customer.lastname}}</option>
-                      </select>
-                    </div>
+                </div>
+                <div class="form-group">
+                  <label class="col-md-4 control-label">Cliente</label>
+                  <div class="col-md-4 inputGroupContainer">
+                    <select class="form-control height">
+                      <option *ngFor="let customer of customerList" value="{{customer.id}}">{{customer.name}}
+                        {{customer.lastname}}
+                      </option>
+                    </select>
                   </div>
-                  <div class="form-group">
-                    <label class="col-md-4 control-label">Nombre</label>
-                    <div class="col-md-4 inputGroupContainer">
-                      <input name="name" placeholder="Nombre" class="form-control" [(ngModel)]="patient.name" #name="ngModel" type="text">
-                    </div>
+                </div>
+                <div class="form-group">
+                  <label class="col-md-4 control-label">Nombre</label>
+                  <div class="col-md-4 inputGroupContainer">
+                    <input name="name" placeholder="Nombre" class="form-control" [(ngModel)]="patient.name"
+                           #name="ngModel" type="text">
                   </div>
-                  <div class="form-group">
-                    <label class="col-md-4 control-label">Sexo</label>
-                    <div class="col-md-4 inputGroupContainer">
-                      <select class="form-control height">
-                        <option value="0">Femenino</option>
-                        <option value="1">Masculino</option>
-                      </select>
-                    </div>
+                </div>
+                <div class="form-group">
+                  <label class="col-md-4 control-label">Sexo</label>
+                  <div class="col-md-4 inputGroupContainer">
+                    <select class="form-control height">
+                      <option value="0">Femenino</option>
+                      <option value="1">Masculino</option>
+                    </select>
                   </div>
-                  <div class="form-group">
-                    <label class="col-md-4 control-label">Fecha de nacimiento</label>
-                    <div class="col-md-4 inputGroupContainer">
-                      <input name="birthdayDate" placeholder="17/09/2017" [(ngModel)]="patient.birthdayDate" #birthdayDate="ngModel" class="form-control" type="text">
-                    </div>
+                </div>
+                <div class="form-group">
+                  <label class="col-md-4 control-label">Fecha de nacimiento</label>
+                  <div class="col-md-4 inputGroupContainer">
+                    <input name="birthdayDate" placeholder="17/09/2017" [(ngModel)]="patient.birthdayDate"
+                           #birthdayDate="ngModel" class="form-control" type="text">
                   </div>
-                  <div class="form-group">
-                    <label class="col-md-4 control-label">Especie</label>
-                    <div class="col-md-4 inputGroupContainer">
-                      <select class="form-control height">
-                        <option value="0">Perro</option>
-                        <option value="1">Gato</option>
-                      </select>
-                    </div>
+                </div>
+                <div class="form-group">
+                  <label class="col-md-4 control-label">Especie</label>
+                  <div class="col-md-4 inputGroupContainer">
+                    <select class="form-control height">
+                      <option value="0">Perro</option>
+                      <option value="1">Gato</option>
+                    </select>
                   </div>
-                  <div class="form-group">
-                    <label class="col-md-4 control-label">Raza</label>
-                    <div class="col-md-4 inputGroupContainer">
-                      <select class="form-control height">
-                        <option value="0">Labrador</option>
-                        <option value="1">Doberman</option>
-                      </select>
-                    </div>
+                </div>
+                <div class="form-group">
+                  <label class="col-md-4 control-label">Raza</label>
+                  <div class="col-md-4 inputGroupContainer">
+                    <select class="form-control height">
+                      <option value="0">Labrador</option>
+                      <option value="1">Doberman</option>
+                    </select>
                   </div>
-                  <div class="form-group">
-                    <label class="col-md-4 control-label"></label>
-                    <div class="col-md-4">
-                      <button class="btn btn-primary">Nuevo</button>
-                    </div>
+                </div>
+                <div class="form-group">
+                  <label class="col-md-4 control-label"></label>
+                  <div class="col-md-4">
+                    <button class="btn btn-primary">Nuevo</button>
                   </div>
-                </fieldset>
-              </form>
-            </tab>
-            <tab heading="Listado de mascotas">
-            </tab>
-          </tabset>
-        </div>
+                </div>
+              </fieldset>
+            </form>
+          </tab>
+          <tab heading="Listado de mascotas">
+          </tab>
+        </tabset>
       </div>
     </div>
   </div>
-</main>
+</div>

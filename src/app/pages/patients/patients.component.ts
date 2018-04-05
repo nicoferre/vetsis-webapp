@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {Router} from '@angular/router';
 import {CustomerService} from '../../services/customers/customer.service';
+import {AuthenticationService} from '../../services/login/login.service';
 
 @Component({
   selector: 'app-patients',
@@ -24,10 +25,4 @@ export class PatientsComponent implements OnInit {
       error => this.errorWithService = error
     );
   }
-
-  logout() {
-    localStorage.removeItem('currentUser');
-    this.router.navigate(['/']);
-  }
-
 }
