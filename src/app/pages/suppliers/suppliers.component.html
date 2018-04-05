@@ -5,8 +5,14 @@
         <h2>Proveedores</h2>
       </div>
       <div>
-        <tabset>
-          <tab heading="Listado de Pedidos">
+        <ul class="nav nav-tabs">
+          <li class="active"><a data-toggle="tab" href="#showOrders">Listado de pedidos</a></li>
+          <li><a data-toggle="tab" href="#newOrder">Nuevo pedido</a></li>
+          <li><a data-toggle="tab" href="#showProviders">Listado de proveedores</a></li>
+          <li><a data-toggle="tab" href="#newProdiver">Nuevo proveedor</a></li>
+        </ul>
+        <div class="tab-content">
+          <div id="showOrders" class="tab-pane fade in active">
             <table id="listado_pedido" class="table table-striped ">
               <div *ngIf="orderList">
                 <thead>
@@ -22,20 +28,20 @@
                 <tr *ngFor="let order of orderList">
                   <th scope="row"></th>
                   <td>{{order.date | date : "dd/MM/yyyy"}}</td>
-                  <td>{{order.idProvider}}</td>
+                  <td>{{order.ordersdetails['0'].name}}</td>
                   <td>{{order.amount}}</td>
                   <td>{{order.observations}}</td>
                 </tr>
                 </tbody>
               </div>
             </table>
-          </tab>
-          <tab heading="Nuevo Pedido">
+          </div>
+          <div id="newOrder" class="tab-pane fade">
             <form class="well form-horizontal" action=" " method="post" id="contact_form">
               <fieldset>
                 <div class="form-group">
                   <label class="col-md-4 control-label">Proveedor</label>
-                  <div class="col-md-4 inputGroupContainer">
+                  <div class="col-md-8 inputGroupContainer">
                     <select class="form-control height" name="providerList" id="providerList">
                       <option name="providerName" *ngFor="let provider of providersList" value="{{provider.id}}">
                         {{provider.name}}
@@ -45,16 +51,16 @@
                 </div>
                 <div class="form-group">
                   <label class="col-md-4 control-label">Monto</label>
-                  <div class="col-md-4 inputGroupContainer">
+                  <div class="col-md-8 inputGroupContainer">
                     <input name="amount" placeholder="Monto" class="form-control" [(ngModel)]="order.amount"
-                           #amount="ngModel" type="text">
+                           #amount="ngModel" type="number">
                   </div>
                 </div>
                 <div class="form-group">
                   <label class="col-md-4 control-label">Observaciones</label>
-                  <div class="col-md-4 inputGroupContainer">
+                  <div class="col-md-8 inputGroupContainer">
                     <input name="observations" placeholder="Observaciones" class="form-control"
-                           [(ngModel)]="provider.observations" #observations="ngModel" type="text">
+                           [(ngModel)]="order.observations" #observations="ngModel" type="text">
                   </div>
                 </div>
                 <div class="form-group">
@@ -65,8 +71,8 @@
                 </div>
               </fieldset>
             </form>
-          </tab>
-          <tab heading="Listado de Proveedores">
+          </div>
+          <div id="showProviders" class="tab-pane fade">
             <table id="listado_proveedor" class="table table-striped ">
               <div *ngIf="providersList">
                 <thead>
@@ -87,10 +93,9 @@
                 </tbody>
               </div>
             </table>
-          </tab>
-          <tab heading="Nuevo Proveedor">
-          </tab>
-        </tabset>
+          </div>
+          <div id="newProvider" class="tab-pane fade"></div>
+        </div>
       </div>
     </div>
   </div>
