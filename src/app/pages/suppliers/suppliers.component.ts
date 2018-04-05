@@ -21,7 +21,6 @@ export class SuppliersComponent implements OnInit {
               private providerService: ProviderService) { }
 
   ngOnInit() {
-    this.role = JSON.parse(localStorage.getItem('currentUser'))[0]['role'];
     this.showProviders();
     this.showOrders();
   }

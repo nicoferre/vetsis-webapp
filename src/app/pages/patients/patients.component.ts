@@ -17,7 +17,6 @@ export class PatientsComponent implements OnInit {
               private customerService: CustomerService) { }
 
   ngOnInit() {
-    this.role = JSON.parse(localStorage.getItem('currentUser'))[0]['role'];
     this.customerService.showCustomer().subscribe(
       availableItems => {
         this.customerList = availableItems;

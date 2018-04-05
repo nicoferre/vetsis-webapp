@@ -12,11 +12,13 @@ export class HeaderComponent implements OnInit {
 
   public role: any;
   isLoggedIn$: Observable<boolean>;
+  isRoleAdmin$: Observable<boolean>;
   constructor(private authenticationService: AuthenticationService,
               private router: Router) { }
 
   ngOnInit() {
     this.isLoggedIn$ = this.authenticationService.isLoggedIn;
+    this.isRoleAdmin$ = this.authenticationService.isRoleAdmin;
   }
 
   logout() {
