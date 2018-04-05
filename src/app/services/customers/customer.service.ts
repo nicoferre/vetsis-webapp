@@ -4,11 +4,13 @@ import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';
 import {ICustomer} from './customer';
+import {IOrders} from '../patients/order';
 
 @Injectable()
 export class CustomerService {
   private _registryHostname;
-
+  headers: Headers;
+  options: RequestOptions;
   constructor(private _http: Http) {
     this._registryHostname = 'http://localhost:8088/vetsis/v1/customer/customers';
   }
@@ -27,6 +29,14 @@ export class CustomerService {
       .catch(this.handleError);
   }
 
+  public deleteCustomer(id): Observable<IOrders[]> {
+    this.headers = new Headers({ 'customer_id': id });
+    this.options = new RequestOptions({ headers: this.headers });
+    return this._http
+      .delete('http://localhost:8088/vetsis/v1/customer/deleteCustomer', this.options)
+      .map((response: Response) => <IOrders[]>response.json())
+      .catch(this.handleError);
+  }
 
   private handleError(error: Response) {
     return Observable.throw(error.json().error || 'Server error');

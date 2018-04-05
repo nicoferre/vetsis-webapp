@@ -5,8 +5,12 @@
         <h2>Clientes</h2>
       </div>
       <div>
-        <tabset>
-          <tab heading="Listado de Clientes">
+        <ul class="nav nav-tabs">
+          <li class="active"><a data-toggle="tab" href="#showCustomers">Listado de Clientes</a></li>
+          <li><a data-toggle="tab" href="#newCustomer">Nuevo cliente</a></li>
+        </ul>
+        <div class="tab-content">
+          <div id="showCustomers" class="tab-pane fade in active">
             <table id="example" class="table table-striped ">
               <div *ngIf="customerList">
                 <thead>
@@ -21,6 +25,7 @@
                   <th scope="col">Piso</th>
                   <th scope="col">Departamento</th>
                   <th scope="col">Localidad</th>
+                  <th scope="col"></th>
                 </tr>
                 </thead>
                 <tbody>
@@ -35,78 +40,79 @@
                   <td>{{customer.floor}}</td>
                   <td>{{customer.flat}}</td>
                   <td>{{customer.location}}</td>
+                  <td (click)="deleteCustomer(customer.id)"><i class="far fa-trash-alt"></i></td>
                 </tr>
                 </tbody>
               </div>
             </table>
-          </tab>
-          <tab heading="Nuevo Cliente">
+          </div>
+          <div id="newCustomer" class="tab-pane fade">
             <form class="well form-horizontal" action=" " method="post" id="contact_form">
               <fieldset>
                 <div class="form-group">
                   <label class="col-md-4 control-label">Nombre</label>
-                  <div class="col-md-4 inputGroupContainer">
+                  <div class="col-md-8 inputGroupContainer">
                     <input name="name" placeholder="Nombre" class="form-control" [(ngModel)]="customers.name" #name="ngModel" type="text">
                   </div>
                 </div>
                 <div class="form-group">
                   <label class="col-md-4 control-label">Apellido</label>
-                  <div class="col-md-4 inputGroupContainer">
+                  <div class="col-md-8 inputGroupContainer">
                     <input name="lastname" placeholder="Apellido" class="form-control" [(ngModel)]="customers.lastname" #lastname="ngModel" type="text">
                   </div>
                 </div>
                 <div class="form-group">
                   <label class="col-md-4 control-label">DNI</label>
-                  <div class="col-md-4 inputGroupContainer">
+                  <div class="col-md-8 inputGroupContainer">
                     <input name="docNum" placeholder="DNI" [(ngModel)]="customers.docNum" #docNum="ngModel" class="form-control" type="text">
                   </div>
                 </div>
                 <div class="form-group">
                   <label class="col-md-4 control-label">Teléfono</label>
-                  <div class="col-md-4 inputGroupContainer">
+                  <div class="col-md-8 inputGroupContainer">
                     <input name="phone" placeholder="(351)4732596" [(ngModel)]="customers.phone" #phone="ngModel" class="form-control" type="text">
                   </div>
                 </div>
                 <div class="form-group">
                   <label class="col-md-4 control-label">Celular</label>
-                  <div class="col-md-4 inputGroupContainer">
+                  <div class="col-md-8 inputGroupContainer">
                     <input name="cellPhone" placeholder="(351)6536411" [(ngModel)]="customers.cellPhone" #cellPhone="ngModel" class="form-control" type="text">
                   </div>
                 </div>
                 <div class="form-group">
                   <label class="col-md-4 control-label">Dirección</label>
-                  <div class="col-md-4 inputGroupContainer">
+                  <div class="col-md-8 inputGroupContainer">
                     <input name="street" placeholder="Dirección" [(ngModel)]="customers.street" #street="ngModel" class="form-control" type="text">
                   </div>
                 </div>
                 <div class="form-group">
                   <label class="col-md-4 control-label">Piso</label>
-                  <div class="col-md-4 inputGroupContainer">
+                  <div class="col-md-8 inputGroupContainer">
                     <input name="floor" placeholder="Piso" [(ngModel)]="customers.floor" #floor="ngModel" class="form-control" type="text">
                   </div>
                 </div>
                 <div class="form-group">
                   <label class="col-md-4 control-label">Departamento</label>
-                  <div class="col-md-4 inputGroupContainer">
+                  <div class="col-md-8 inputGroupContainer">
                     <input name="flat" placeholder="Departamento" [(ngModel)]="customers.flat" #flat="ngModel" class="form-control" type="text">
                   </div>
                 </div>
                 <div class="form-group">
                   <label class="col-md-4 control-label">Localidad</label>
-                  <div class="col-md-4 inputGroupContainer">
+                  <div class="col-md-8 inputGroupContainer">
                     <input name="location" placeholder="Localidad" [(ngModel)]="customers.location" #location="ngModel" class="form-control" type="text">
                   </div>
                 </div>
                 <div class="form-group">
                   <label class="col-md-4 control-label"></label>
-                  <div class="col-md-4">
+                  <div class="col-md-8">
                     <button (click)="newClient()" class="btn btn-primary">Nuevo</button>
                   </div>
                 </div>
               </fieldset>
             </form>
-          </tab>
-        </tabset>
+          </div>
+        </div>
       </div>
     </div>
   </div>

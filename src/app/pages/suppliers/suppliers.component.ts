@@ -80,7 +80,6 @@ export class SuppliersComponent implements OnInit {
   }
 
   deleteProvider(id) {
-    console.info('delete provider' + id);
     this.providerService.deleteProvider(id)
       .subscribe(
         result => this.showProviders(),
