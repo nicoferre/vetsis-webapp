@@ -1,6 +1,5 @@
 import {Component, OnInit} from '@angular/core';
 import {CustomerService} from '../../services/customers/customer.service';
-import {Router} from '@angular/router';
 declare let jquery: any;
 declare let $: any;
 
@@ -15,8 +14,7 @@ export class CustomersComponent implements OnInit {
   public errorWithService: any;
   customers: any = {};
 
-  constructor(private customerService: CustomerService,
-              private router: Router) {
+  constructor(private customerService: CustomerService) {
   }
 
   ngOnInit() {

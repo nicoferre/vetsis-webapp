@@ -1,0 +1,121 @@
+<div class="container center">
+  <div class="row">
+    <div class="col-lg-12">
+      <div class="pageTitle col-lg-12" xmlns="" xmlns="">
+        <h2>Productos</h2>
+      </div>
+      <div>
+        <ul class="nav nav-tabs">
+          <li class=""><a data-toggle="tab" href="#showProducts">Listado de Productos</a></li>
+          <li><a data-toggle="tab" href="#newProduct">Nuevo producto</a></li>
+        </ul>
+        <div class="tab-content">
+          <div id="showProducts" class="tab-pane fade in active">
+            <table id="example" class="table table-striped ">
+              <div *ngIf="productList">
+                <thead>
+                <tr>
+                  <th scope="col"></th>
+                  <th scope="col">Nombre</th>
+                  <th scope="col">Categoria</th>
+                  <th scope="col">Cantidad</th>
+                  <th scope="col">Precio 1</th>
+                  <th scope="col">Precio 2</th>
+                  <th scope="col">Precio 3</th>
+                  <th scope="col">Precio 4</th>
+                  <th scope="col">Cantidad mínima</th>
+                  <th scope="col"></th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr *ngFor="let product of productList">
+                  <th scope="row"></th>
+                  <td>{{product.name}}</td>
+                  <td>{{product.categorydetails['0'].name}}</td>
+                  <td>{{product.quantity}}</td>
+                  <td>${{product.price_one}}</td>
+                  <td>${{product.price_two}}</td>
+                  <td>${{product.price_three}}</td>
+                  <td>${{product.price_four}}</td>
+                  <td>{{product.minimum_quantity}}</td>
+                  <td (click)="deleteProduct(product.id)"><i class="far fa-trash-alt"></i></td>
+                </tr>
+                </tbody>
+              </div>
+            </table>
+          </div>
+          <div id="newProduct" class="tab-pane fade">
+            <form class="well form-horizontal" action=" " method="post" id="product_form">
+              <fieldset>
+                <div class="form-group">
+                  <label class="col-md-4 control-label">Nombre</label>
+                  <div class="col-md-8 inputGroupContainer">
+                    <input name="name" placeholder="Nombre" class="form-control" [(ngModel)]="product.name"
+                           #name="ngModel" type="text">
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label class="col-md-4 control-label">Categoria</label>
+                  <div class="col-md-8 inputGroupContainer">
+                    <select class="form-control height" name="categoryList" id="categoryList">>
+                      <option *ngFor="let category of categoryList" value="{{category.id}}">{{category.name}}
+                      </option>
+                    </select>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label class="col-md-4 control-label">Cantidad</label>
+                  <div class="col-md-8 inputGroupContainer">
+                    <input name="quantity" placeholder="Cantidad" class="form-control" [(ngModel)]="product.quantity"
+                           #quantity="ngModel" type="number">
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label class="col-md-4 control-label">Precio 1</label>
+                  <div class="col-md-8 inputGroupContainer">
+                    <input name="price_one" placeholder="Precio" class="form-control" [(ngModel)]="product.price_one"
+                           #price_one="ngModel" type="number">
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label class="col-md-4 control-label">Precio 2</label>
+                  <div class="col-md-8 inputGroupContainer">
+                    <input name="price_two" placeholder="Precio" class="form-control" [(ngModel)]="product.price_two"
+                           #price_two="ngModel" type="number">
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label class="col-md-4 control-label">Precio 3</label>
+                  <div class="col-md-8 inputGroupContainer">
+                    <input name="price_three" placeholder="Precio" class="form-control" [(ngModel)]="product.price_three"
+                           #price_three="ngModel" type="number">
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label class="col-md-4 control-label">Precio 4</label>
+                  <div class="col-md-8 inputGroupContainer">
+                    <input name="price_four" placeholder="Precio" class="form-control" [(ngModel)]="product.price_four"
+                           #price_four="ngModel" type="number">
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label class="col-md-4 control-label">Cantidad mínima</label>
+                  <div class="col-md-8 inputGroupContainer">
+                    <input name="minimum_quantity" placeholder="Cantidad mínima" class="form-control" [(ngModel)]="product.minimum_quantity"
+                           #minimum_quantity="ngModel" type="number">
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label class="col-md-4 control-label"></label>
+                  <div class="col-md-4">
+                    <button (click)="newProduct()" class="btn btn-primary">Nuevo</button>
+                  </div>
+                </div>
+              </fieldset>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

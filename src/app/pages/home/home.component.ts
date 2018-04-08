@@ -11,10 +11,9 @@ import {AuthenticationService} from '../../services/login/login.service';
 })
 export class HomeComponent implements OnInit {
 
-  constructor(private authenticationService: AuthenticationService) {
+  constructor() {
   }
 
   ngOnInit() {
-    console.info(this.authenticationService.isLoggedIn._isScalar);
   }
 }

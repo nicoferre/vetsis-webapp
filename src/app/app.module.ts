@@ -29,6 +29,8 @@ import {HomeComponent} from './pages/home/home.component';
 import {AdministratorComponent} from './pages/administrator/administrator.component';
 import {ProviderService} from './services/providers/provider.service';
 import {CategoryService} from './services/category/category.service';
+import {ProductsComponent} from './pages/products/products.component';
+import {ProductService} from './services/product/product.service';
 
 @NgModule({
   declarations: [
@@ -44,6 +46,7 @@ import {CategoryService} from './services/category/category.service';
     LoginComponent,
     AdministratorComponent,
     HomeComponent,
+    ProductsComponent,
   ],
   imports: [
     BrowserModule,
@@ -61,6 +64,7 @@ import {CategoryService} from './services/category/category.service';
     ProviderService,
     AuthenticationService,
     CategoryService,
+    ProductService,
     AuthGuard],
   bootstrap: [AppComponent]
 })

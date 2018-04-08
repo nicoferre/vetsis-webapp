@@ -41,6 +41,11 @@
           <p>Proveedores</p>
         </a>
       </li>
+      <li class="menuItem">
+        <a routerLink="../products">
+          <p>Productos</p>
+        </a>
+      </li>
       <li class="menuItem" *ngIf="isRoleAdmin$ | async as isRoleAdmin">
         <a routerLink="../administrator">
           <p>Administrador</p>
