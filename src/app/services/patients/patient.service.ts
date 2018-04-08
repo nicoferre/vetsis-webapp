@@ -31,9 +31,9 @@ export class PatientService {
       .catch(this.handleError);
   }
 
-  public newPet(product: string) {
+  public newPet(pet) {
     return this._http
-      .post('http://localhost:8088/vetsis/v1/pet/addPet', product)
+      .post('http://localhost:8088/vetsis/v1/pet/addPet', pet)
       .map((response: Response) => <any>response.json())
       .catch(this.handleError);
   }

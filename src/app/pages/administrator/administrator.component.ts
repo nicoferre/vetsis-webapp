@@ -26,7 +26,7 @@ export class AdministratorComponent implements OnInit {
   ngOnInit() {
     this.showCategories();
     this.showSpecies();
-    this.showBreed();
+    this.showBreed('');
   }
 
   newCategory() {
@@ -74,6 +74,7 @@ export class AdministratorComponent implements OnInit {
       error => this.errorWithService = error
     );
   }
+
   deleteSpecies(id) {
     this.speciesService.deleteSpecies(id)
       .subscribe(
@@ -97,25 +98,26 @@ export class AdministratorComponent implements OnInit {
     this.breed.idSpecies = parseInt(id);
     this.breedService.newBreed(this.breed).subscribe(
       breed => {
-        this.showBreed();
+        this.showBreed('');
       },
       error => this.errorWithService = error
     );
     this.clearBreedForm();
   }
 
-  showBreed() {
-    this.breedService.showBreed().subscribe(
+  showBreed(id) {
+    this.breedService.showBreed(id).subscribe(
       availableItems => {
         this.breedList = availableItems;
       },
       error => this.errorWithService = error
     );
   }
+
   deleteBreed(id) {
     this.breedService.deleteBreed(id)
       .subscribe(
-        result => this.showBreed(),
+        result => this.showBreed(''),
         error => this.errorWithService = error
       );
   }

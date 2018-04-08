@@ -16,14 +16,14 @@
                 <fieldset>
                   <div class="form-group">
                     <label class="col-md-4 control-label">Número de historia clinica</label>
-                    <div class="col-md-4 inputGroupContainer">
-                      <input name="id" placeholder="1" readonly="readonly" class="form-control" type="text">
+                    <div class="col-md-8 inputGroupContainer">
+                      <input name="id" placeholder="{{numberPet}}" readonly="readonly" class="form-control" type="text">
                     </div>
                   </div>
                   <div class="form-group">
                     <label class="col-md-4 control-label">Cliente</label>
-                    <div class="col-md-4 inputGroupContainer">
-                      <select class="form-control height">
+                    <div class="col-md-8 inputGroupContainer">
+                      <select class="form-control height" name="customerList" id="customerList">
                         <option *ngFor="let customer of customerList" value="{{customer.id}}">{{customer.name}}
                           {{customer.lastname}}
                         </option>
@@ -32,15 +32,15 @@
                   </div>
                   <div class="form-group">
                     <label class="col-md-4 control-label">Nombre</label>
-                    <div class="col-md-4 inputGroupContainer">
-                      <input name="name" placeholder="Nombre" class="form-control" [(ngModel)]="patient.name"
+                    <div class="col-md-8 inputGroupContainer">
+                      <input name="name" placeholder="Nombre" class="form-control" [(ngModel)]="pet.name"
                              #name="ngModel" type="text">
                     </div>
                   </div>
                   <div class="form-group">
                     <label class="col-md-4 control-label">Sexo</label>
-                    <div class="col-md-4 inputGroupContainer">
-                      <select class="form-control height">
+                    <div class="col-md-8 inputGroupContainer">
+                      <select class="form-control height" name="gender" id="gender">
                         <option value="0">Femenino</option>
                         <option value="1">Masculino</option>
                       </select>
@@ -48,33 +48,35 @@
                   </div>
                   <div class="form-group">
                     <label class="col-md-4 control-label">Fecha de nacimiento</label>
-                    <div class="col-md-4 inputGroupContainer">
-                      <input name="birthdayDate" placeholder="17/09/2017" [(ngModel)]="patient.birthdayDate"
+                    <div class="col-md-8 inputGroupContainer">
+                      <input name="birthdayDate" placeholder="17/09/2017" [(ngModel)]="pet.birthdayDate"
                              #birthdayDate="ngModel" class="form-control" type="text">
                     </div>
                   </div>
                   <div class="form-group">
                     <label class="col-md-4 control-label">Especie</label>
-                    <div class="col-md-4 inputGroupContainer">
-                      <select class="form-control height">
-                        <option value="0">Perro</option>
-                        <option value="1">Gato</option>
+                    <div class="col-md-8 inputGroupContainer">
+                      <select class="form-control height" name="speciesList" id="speciesList" (change)="onSelectedSpecies()">
+                        <option name="speciesName" *ngFor="let species of speciesList" value="{{species.id}}">
+                          {{species.name}}
+                        </option>
                       </select>
                     </div>
                   </div>
                   <div class="form-group">
                     <label class="col-md-4 control-label">Raza</label>
-                    <div class="col-md-4 inputGroupContainer">
-                      <select class="form-control height">
-                        <option value="0">Labrador</option>
-                        <option value="1">Doberman</option>
+                    <div class="col-md-8 inputGroupContainer">
+                      <select class="form-control height" name="breedList" id="breedList">
+                        <option name="breedName" *ngFor="let breed of breedList" value="{{breed.id}}">
+                          {{breed.name}}
+                        </option>
                       </select>
                     </div>
                   </div>
                   <div class="form-group">
                     <label class="col-md-4 control-label"></label>
                     <div class="col-md-4">
-                      <button class="btn btn-primary">Nuevo</button>
+                      <button (click)="newPet()" class="btn btn-primary">Nuevo</button>
                     </div>
                   </div>
                 </fieldset>
@@ -98,11 +100,11 @@
                   <tbody>
                   <tr *ngFor="let pet of petList">
                     <th scope="row"></th>
-                    <td>{{pet.customerdetails['0'].name}} {{pet.customerdetails['0'].lastname}}</td>
+                    <td>{{pet.customer.name}} {{pet.customer.lastname}}</td>
                     <td>{{pet.name}}</td>
-                    <td>{{pet.species}}</td>
-                    <td>{{pet.breed}}</td>
-                    <td>{{pet.gender}}</td>
+                    <td>{{pet.species.name}}</td>
+                    <td>{{pet.breeds.name}}</td>
+                    <td>{{(pet.gender === 0) ? 'Hembra' : 'Macho' }}</td>
                     <td>{{pet.birthdayDate}}</td>
                     <td><i class="far fa-trash-alt"></i></td>
                   </tr>

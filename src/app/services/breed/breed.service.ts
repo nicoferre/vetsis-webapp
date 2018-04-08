@@ -19,11 +19,20 @@ export class BreedService {
       .catch(this.handleError);
   }
 
-  public showBreed(): Observable<IBreed[]> {
-    return this._http
-      .get('http://localhost:8088/vetsis/v1/breed/breeds')
-      .map((response: Response) => <IBreed[]>response.json())
-      .catch(this.handleError);
+  public showBreed(id): Observable<IBreed[]> {
+    if (id) {
+      this.headers = new Headers({ 'species_id': id });
+      this.options = new RequestOptions({ headers: this.headers });
+      return this._http
+        .get('http://localhost:8088/vetsis/v1/breed/breeds', this.options)
+        .map((response: Response) => <IBreed[]>response.json())
+        .catch(this.handleError);
+    } else {
+      return this._http
+        .get('http://localhost:8088/vetsis/v1/breed/breeds')
+        .map((response: Response) => <IBreed[]>response.json())
+        .catch(this.handleError);
+    }
   }
 
   public deleteBreed(id): Observable<IBreed[]> {
