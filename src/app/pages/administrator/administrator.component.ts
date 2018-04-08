@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {CategoryService} from '../../services/category/category.service';
-import {AuthenticationService} from '../../services/login/login.service';
+declare let jquery: any;
+declare let $: any;
 
 @Component({
   selector: 'app-administrator',
@@ -11,10 +12,21 @@ export class AdministratorComponent implements OnInit {
 
   public categoryList = [];
   public errorWithService: any;
+  category: any = {};
   constructor(private categoryService: CategoryService) { }
 
   ngOnInit() {
     this.showCategories();
+  }
+
+  newCategory() {
+    this.categoryService.newCategory(this.category).subscribe(
+      category => {
+        this.showCategories();
+      },
+      error => this.errorWithService = error
+    );
+    this.clearCategoryForm();
   }
 
   showCategories() {
@@ -34,4 +46,8 @@ export class AdministratorComponent implements OnInit {
       );
   }
 
+  clearCategoryForm() {
+    this.category.name = null;
+    $('.nav-tabs a[href="#showCategories"]').tab('show');
+  }
 }
