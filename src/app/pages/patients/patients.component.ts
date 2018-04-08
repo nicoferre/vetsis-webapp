@@ -37,14 +37,21 @@ export class PatientsComponent implements OnInit {
     this.numberPet = this.petList.length + 1;
   }
 
+  deletePet(id) {
+    this.patientService.deletePet(id)
+      .subscribe(
+        result => this.showPets(),
+        error => this.errorWithService = error
+      );
+    $('.nav-tabs a[href="#showPets"]').tab('show');
+  }
+
   newPet() {
     this.pet.idSpecies = parseInt($("#speciesList").val());
     this.pet.idBreed = parseInt($("#breedList").val());
     this.pet.id = this.numberPet;
     this.pet.idCustomer = parseInt($("#customerList").val());
     this.pet.gender = parseInt($("#gender").val());
-    console.info(this.pet);
-
     this.patientService.newPet(this.pet).subscribe(
       pet => {
         this.showPets();
