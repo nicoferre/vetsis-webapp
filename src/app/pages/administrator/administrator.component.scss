@@ -1,3 +1,16 @@
+@import "../../../scss/variable.scss";
+@import "../../../scss/mixins.scss";
+
+#success_message{ display: none;}
+
 .form-group {
   margin-bottom: 1rem !important;
+}
+
+.height{
+  height: calc(3.25rem + 2px) !important;
+}
+
+.well{
+  width: 60rem !important;
 }

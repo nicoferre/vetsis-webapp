@@ -6,11 +6,12 @@
       </div>
       <div>
         <ul class="nav nav-tabs">
-          <li class=""><a data-toggle="tab" href="#showCategories">Categorias</a></li>
-          <!--<li><a data-toggle="tab" href="#newCategory">Nueva Categoria</a></li>-->
+          <li class=""><a data-toggle="tab" href="#categories">Categorias</a></li>
+          <li><a data-toggle="tab" href="#species">Especies</a></li>
+          <li><a data-toggle="tab" href="#breed">Raza</a></li>
         </ul>
         <div class="tab-content">
-          <div id="showCategories" class="tab-pane fade in active">
+          <div id="categories" class="tab-pane fade in active">
             <form class="well form-horizontal" action=" " method="post" id="category_form">
               <fieldset>
                 <div class="form-group">
@@ -47,7 +48,91 @@
               </div>
             </table>
           </div>
-          <div id="newCategory" class="tab-pane fade">
+          <div id="species" class="tab-pane fade">
+            <form class="well form-horizontal" action=" " method="post" id="species_form">
+              <fieldset>
+                <div class="form-group">
+                  <label class="col-md-4 control-label">Especie</label>
+                  <div class="col-md-8 inputGroupContainer">
+                    <input name="name" placeholder="Especie" class="form-control" [(ngModel)]="species.name"
+                           #species.name="ngModel" type="text">
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label class="col-md-4 control-label"></label>
+                  <div class="col-md-4">
+                    <button (click)="newSpecies()" class="btn btn-primary">Nuevo</button>
+                  </div>
+                </div>
+              </fieldset>
+            </form>
+            <table id="speciesTable" class="table table-striped ">
+              <div *ngIf="speciesList">
+                <thead>
+                <tr>
+                  <th scope="col"></th>
+                  <th scope="col">Categoria</th>
+                  <th scope="col"></th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr *ngFor="let species of speciesList">
+                  <th scope="row"></th>
+                  <td>{{species.name}}</td>
+                  <td (click)="deleteSpecies(species.id)"><i class="far fa-trash-alt"></i></td>
+                </tr>
+                </tbody>
+              </div>
+            </table>
+          </div>
+          <div id="breed" class="tab-pane fade">
+            <form class="well form-horizontal" action=" " method="post" id="breed_form">
+              <fieldset>
+                <div class="form-group">
+                  <label class="col-md-4 control-label">Especie</label>
+                  <div class="col-md-8 inputGroupContainer">
+                    <select class="form-control height" name="speciesList" id="speciesList">
+                      <option name="speciesName" *ngFor="let species of speciesList" value="{{species.id}}">
+                        {{species.name}}
+                      </option>
+                    </select>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label class="col-md-4 control-label">Raza</label>
+                  <div class="col-md-8 inputGroupContainer">
+                    <input name="name" placeholder="Raza" class="form-control" [(ngModel)]="breed.name"
+                           #breed.name="ngModel" type="text">
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label class="col-md-4 control-label"></label>
+                  <div class="col-md-4">
+                    <button (click)="newBreed()" class="btn btn-primary">Nuevo</button>
+                  </div>
+                </div>
+              </fieldset>
+            </form>
+            <table id="breedTable" class="table table-striped ">
+              <div *ngIf="breedList">
+                <thead>
+                <tr>
+                  <th scope="col"></th>
+                  <th scope="col">Especie</th>
+                  <th scope="col">Raza</th>
+                  <th scope="col"></th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr *ngFor="let breed of breedList">
+                  <th scope="row"></th>
+                  <td>{{breed.speciesdetails['0'].name}}</td>
+                  <td>{{breed.name}}</td>
+                  <td (click)="deleteBreed(breed.id)"><i class="far fa-trash-alt"></i></td>
+                </tr>
+                </tbody>
+              </div>
+            </table>
           </div>
         </div>
       </div>

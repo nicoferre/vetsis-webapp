@@ -31,6 +31,9 @@ import {ProviderService} from './services/providers/provider.service';
 import {CategoryService} from './services/category/category.service';
 import {ProductsComponent} from './pages/products/products.component';
 import {ProductService} from './services/product/product.service';
+import {PatientService} from './services/patients/patient.service';
+import {SpeciesService} from './services/species/species.service';
+import {BreedService} from './services/breed/breed.service';
 
 @NgModule({
   declarations: [
@@ -65,6 +68,9 @@ import {ProductService} from './services/product/product.service';
     AuthenticationService,
     CategoryService,
     ProductService,
+    PatientService,
+    SpeciesService,
+    BreedService,
     AuthGuard],
   bootstrap: [AppComponent]
 })
