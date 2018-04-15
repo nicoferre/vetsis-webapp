@@ -34,6 +34,8 @@ import {ProductService} from './services/product/product.service';
 import {PatientService} from './services/patients/patient.service';
 import {SpeciesService} from './services/species/species.service';
 import {BreedService} from './services/breed/breed.service';
+import {TurnsComponent} from './pages/turns/turns.component';
+import {TurnsService} from './services/turns/turns.service';
 
 @NgModule({
   declarations: [
@@ -50,6 +52,7 @@ import {BreedService} from './services/breed/breed.service';
     AdministratorComponent,
     HomeComponent,
     ProductsComponent,
+    TurnsComponent,
   ],
   imports: [
     BrowserModule,
@@ -71,6 +74,7 @@ import {BreedService} from './services/breed/breed.service';
     PatientService,
     SpeciesService,
     BreedService,
+    TurnsService,
     AuthGuard],
   bootstrap: [AppComponent]
 })

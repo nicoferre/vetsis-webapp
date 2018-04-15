@@ -1,0 +1,78 @@
+<div class="container" style="z-index: 0 !important;">
+  <div class="row">
+    <div class="col-lg-12">
+      <div class="pageTitle col-lg-12" xmlns="" xmlns="">
+        <h2>Turnos</h2>
+      </div>
+      <div>
+        <ul class="nav nav-tabs">
+          <li class=""><a data-toggle="tab" href="#showTurns">Listado de turnos</a></li>
+          <li><a data-toggle="tab" href="#newTurn">Nuevo turno</a></li>
+        </ul>
+        <div class="tab-content">
+          <div id="showTurns" class="tab-pane fade in active">
+            <table id="listado_pedido" class="table table-striped ">
+              <div *ngIf="turnList">
+                <thead>
+                <tr>
+                  <th scope="col"></th>
+                  <th scope="col">Customer</th>
+                  <th scope="col">Mascota</th>
+                  <th scope="col">Fecha</th>
+                  <th></th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr *ngFor="let turn of turnList">
+                  <th scope="row"></th>
+                  <td>{{turn.customer.name}} {{turn.customer.lastname}}</td>
+                  <td>{{turn.pets.name}}</td>
+                  <td>{{turn.date}}</td>
+                  <td (click)="deleteTurn(turn.id)"><i class="far fa-trash-alt"></i></td>
+                </tr>
+                </tbody>
+              </div>
+            </table>
+          </div>
+          <div id="newTurn" class="tab-pane fade">
+            <form class="well form-horizontal" action=" " method="post" id="contact_form">
+              <fieldset>
+                <div class="form-group">
+                  <label class="col-md-4 control-label">Cliente</label>
+                  <div class="col-md-8 inputGroupContainer">
+                    <select class="form-control height" name="customerList" id="customerList" (change)="onSelectedCustomer()">
+                      <option *ngFor="let customer of customerList" value="{{customer.id}}">{{customer.name}}
+                        {{customer.lastname}}
+                      </option>
+                    </select>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label class="col-md-4 control-label">Mascota</label>
+                  <div class="col-md-8 inputGroupContainer">
+                    <select class="form-control height" name="petList" id="petList">
+                      <option *ngFor="let pet of petList" value="{{pet.id}}">{{pet.name}}</option>
+                    </select>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label class="col-md-4 control-label">Fecha de turno</label>
+                  <div class="col-md-8 inputGroupContainer">
+                    <input name="date" placeholder="17/09/2017" [(ngModel)]="turn.date"
+                           #date="ngModel" class="form-control" type="text">
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label class="col-md-4 control-label"></label>
+                  <div class="col-md-4">
+                    <button (click)="newTurn()" class="btn btn-primary">Nuevo</button>
+                  </div>
+                </div>
+              </fieldset>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

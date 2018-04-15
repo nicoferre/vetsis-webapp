@@ -27,14 +27,13 @@ export class PatientsComponent implements OnInit {
   constructor(private router: Router,
               private customerService: CustomerService,
               private speciesService: SpeciesService,
-              private  patientService: PatientService,
+              private patientService: PatientService,
               private breedService: BreedService) { }
 
   ngOnInit() {
     this.showCustomer();
     this.showSpecies();
     this.showPets();
-    this.numberPet = this.petList.length + 1;
   }
 
   deletePet(id) {
@@ -84,9 +83,10 @@ export class PatientsComponent implements OnInit {
   }
 
   showPets() {
-    this.patientService.showPets().subscribe(
+    this.patientService.showPets('').subscribe(
       availableItems => {
         this.petList = availableItems;
+        this.numberPet = this.petList.length + 1;
       },
       error => this.errorWithService = error
     );

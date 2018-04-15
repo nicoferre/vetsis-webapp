@@ -7,11 +7,41 @@
       <div>
         <div>
           <ul class="nav nav-tabs">
-            <li class=""><a data-toggle="tab" href="#newPet">Nueva mascota</a></li>
-            <li><a data-toggle="tab" href="#showPets">Listado de mascotas</a></li>
+            <li class=""><a data-toggle="tab" href="#showPets">Listado de mascotas</a></li>
+            <li><a data-toggle="tab" href="#newPet">Nueva mascota</a></li>
           </ul>
           <div class="tab-content">
-            <div id="newPet" class="tab-pane fade in active">
+            <div id="showPets" class="tab-pane fade in active">
+              <table id="example" class="table table-striped ">
+                <div *ngIf="petList">
+                  <thead>
+                  <tr>
+                    <th scope="col"></th>
+                    <th scope="col">Cliente</th>
+                    <th scope="col">Nombre</th>
+                    <th scope="col">Especie</th>
+                    <th scope="col">Raza</th>
+                    <th scope="col">Sexo</th>
+                    <th scope="col">Cumpleaños</th>
+                    <th scope="col"></th>
+                  </tr>
+                  </thead>
+                  <tbody>
+                  <tr *ngFor="let pet of petList">
+                    <th scope="row"></th>
+                    <td>{{pet.customer.name}} {{pet.customer.lastname}}</td>
+                    <td>{{pet.name}}</td>
+                    <td>{{pet.species.name}}</td>
+                    <td>{{pet.breeds.name}}</td>
+                    <td>{{(pet.gender === 0) ? 'Hembra' : 'Macho' }}</td>
+                    <td>{{pet.birthdayDate}}</td>
+                    <td (click)="deletePet(pet.id)"><i class="far fa-trash-alt"></i></td>
+                  </tr>
+                  </tbody>
+                </div>
+              </table>
+            </div>
+            <div id="newPet" class="tab-pane fade">
               <form class="well form-horizontal" action=" " method="post" id="contact_form">
                 <fieldset>
                   <div class="form-group">
@@ -81,36 +111,6 @@
                   </div>
                 </fieldset>
               </form>
-            </div>
-            <div id="showPets" class="tab-pane fade">
-              <table id="example" class="table table-striped ">
-                <div *ngIf="petList">
-                  <thead>
-                  <tr>
-                    <th scope="col"></th>
-                    <th scope="col">Cliente</th>
-                    <th scope="col">Nombre</th>
-                    <th scope="col">Especie</th>
-                    <th scope="col">Raza</th>
-                    <th scope="col">Sexo</th>
-                    <th scope="col">Cumpleaños</th>
-                    <th scope="col"></th>
-                  </tr>
-                  </thead>
-                  <tbody>
-                  <tr *ngFor="let pet of petList">
-                    <th scope="row"></th>
-                    <td>{{pet.customer.name}} {{pet.customer.lastname}}</td>
-                    <td>{{pet.name}}</td>
-                    <td>{{pet.species.name}}</td>
-                    <td>{{pet.breeds.name}}</td>
-                    <td>{{(pet.gender === 0) ? 'Hembra' : 'Macho' }}</td>
-                    <td>{{pet.birthdayDate}}</td>
-                    <td (click)="deletePet(pet.id)"><i class="far fa-trash-alt"></i></td>
-                  </tr>
-                  </tbody>
-                </div>
-              </table>
             </div>
           </div>
         </div>
