@@ -32,6 +32,7 @@ export class CustomersComponent implements OnInit {
   }
 
   newClient() {
+    this.validNNull(this.customers)
     this.customerService.newClient(this.customers).subscribe(
       client => {
         this.showClients();
@@ -47,6 +48,7 @@ export class CustomersComponent implements OnInit {
     this.customers.phone = null;
     this.customers.cellPhone = null;
     this.customers.street = null;
+    this.customers.number = null;
     this.customers.floor = null;
     this.customers.flat = null;
     this.customers.location = null;
@@ -60,5 +62,9 @@ export class CustomersComponent implements OnInit {
         error => this.errorWithService = error
       );
     $('.nav-tabs a[href="#showCustomers"]').tab('show');
+  }
+
+  validNNull(customer) {
+    console.log(customer);
   }
 }
