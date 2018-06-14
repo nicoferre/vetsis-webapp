@@ -13,6 +13,7 @@ import {HomeComponent} from './pages/home/home.component';
 import {AdministratorComponent} from './pages/administrator/administrator.component';
 import {ProductsComponent} from './pages/products/products.component';
 import {TurnsComponent} from './pages/turns/turns.component';
+import {ClinicHistoryComponent} from './pages/clinicHistory/clinicHistory.component';
 
 const routes: Routes = [
   {
@@ -29,6 +30,7 @@ const routes: Routes = [
       {path : 'administrator', component: AdministratorComponent, canActivate: [AuthGuard] },
       {path : 'products', component: ProductsComponent, canActivate: [AuthGuard] },
       {path : 'turns', component: TurnsComponent, canActivate: [AuthGuard] },
+      {path : 'clinicHistory', component: ClinicHistoryComponent, canActivate: [AuthGuard] },
       {path : 'login', component: LoginComponent},
       {path : '', component: LoginComponent},
       {path : '*', component: LoginComponent},

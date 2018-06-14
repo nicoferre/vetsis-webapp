@@ -36,6 +36,8 @@ import {SpeciesService} from './services/species/species.service';
 import {BreedService} from './services/breed/breed.service';
 import {TurnsComponent} from './pages/turns/turns.component';
 import {TurnsService} from './services/turns/turns.service';
+import {ClinicHistoryComponent} from './pages/clinicHistory/clinicHistory.component';
+import {ClinicHistoryService} from './services/clinicHistory/clinicHistory.service';
 
 @NgModule({
   declarations: [
@@ -53,6 +55,7 @@ import {TurnsService} from './services/turns/turns.service';
     HomeComponent,
     ProductsComponent,
     TurnsComponent,
+    ClinicHistoryComponent,
   ],
   imports: [
     BrowserModule,
@@ -75,6 +78,7 @@ import {TurnsService} from './services/turns/turns.service';
     SpeciesService,
     BreedService,
     TurnsService,
+    ClinicHistoryService,
     AuthGuard],
   bootstrap: [AppComponent]
 })
